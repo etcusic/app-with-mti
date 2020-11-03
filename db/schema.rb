@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_03_133150) do
+ActiveRecord::Schema.define(version: 2020_11_03_140939) do
 
   create_table "appointments", force: :cascade do |t|
     t.datetime "date_time"
@@ -22,20 +22,7 @@ ActiveRecord::Schema.define(version: 2020_11_03_133150) do
     t.index ["tutor_id"], name: "index_appointments_on_tutor_id"
   end
 
-  create_table "students", force: :cascade do |t|
-    t.string "first_name"
-    t.string "last_name"
-    t.string "email"
-    t.string "password_digest"
-    t.text "about_me"
-    t.integer "level"
-    t.integer "gold_stars"
-    t.boolean "helicopter_parent"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "tutors", force: :cascade do |t|
+  create_table "users", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
     t.string "email"
@@ -44,8 +31,10 @@ ActiveRecord::Schema.define(version: 2020_11_03_133150) do
     t.string "zoom_link"
     t.integer "rating"
     t.boolean "puppets"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.text "about_me"
+    t.integer "level"
+    t.integer "gold_stars"
+    t.boolean "helicopter_parent"
   end
 
   add_foreign_key "appointments", "students"
