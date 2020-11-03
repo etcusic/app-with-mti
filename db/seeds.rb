@@ -26,12 +26,12 @@ names = NAMES.uniq
         resume: Faker::Lorem.paragraph(sentence_count: 4),
         zoom_link: Faker::Barcode.isbn, 
         rating: rand(1..10),
-        puppets: Faker::Boolean.boolean,
-        user_id: i + 1
+        puppets: Faker::Boolean.boolean
     )
 end
 
 25.times do | i |
+    name = names[i].split(" ")
     Student.create(
         id: i + 1,
         first_name: name[0],
@@ -41,15 +41,14 @@ end
         about_me: Faker::Movie.quote,
         level: rand(1..100),
         gold_stars: rand(1..50),
-        helicopter_parent: Faker::Boolean.boolean,
-        user_id: i + 11
+        helicopter_parent: Faker::Boolean.boolean
     )
 end
 
 50.times do | i |
     Appointment.create(
         id: i + 1,
-        time: Faker::Date.between(from: '2020-11-20', to: '2020-12-20'),
+        date_time: Faker::Date.between(from: '2020-11-20', to: '2020-12-20'),
         tutor_id: rand(1..5),
         student_id: rand(1..25)
     )
