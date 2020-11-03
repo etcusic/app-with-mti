@@ -34,7 +34,7 @@ end
 25.times do | i |
     name = names[i].split(" ")
     User.create(
-        id: i + 1,
+        id: i + 6,
         type: Student,
         first_name: name[0],
         last_name: name[1],
@@ -47,7 +47,7 @@ end
     )
 end
 
-binding.pry
+# binding.pry
 
 50.times do | i |
     Appointment.create(
