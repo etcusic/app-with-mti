@@ -7,23 +7,50 @@ Tutor.delete_all
 Student.delete_all
 Appointment.delete_all
 
-NAMES = []
-
-50.times do 
-    NAMES << Faker::FunnyName.two_word_name
-end
-
-names = NAMES.uniq
+NAMES = [
+    "Dee Zaster",
+    "Brandon Irons",
+    "Val Crow",
+    "Skip Roper",
+    "Olive Yew",
+    "Rusty Carr",
+    "Justin Credible",
+    "Oliver Sutton",
+    "Oren Jellow",
+    "Winnie Bago",
+    "Jim Sox",
+    "Les Moore",
+    "Doug Hole",
+    "Tish Hughes",
+    "Frank Enstein",
+    "Warren T.",
+    "Crystal Ball",
+    "Chip Munk",
+    "Mike Stand",
+    "Ben Thair",
+    "Justin Thyme",
+    "Kandi Apple",
+    "Rita Story",
+    "Pete Moss",
+    "Artie Choke",
+    "Bob Frapples",
+    "Penny Nichols",
+    "Ginger Vitis",
+    "Phil Rupp",
+    "Michelle Lynn",
+    "Mort Tallity",
+    "Jack Hammer"
+]
 
 5.times do | i |
-    name = names[i].split(" ")
-    User.create(
+    name = NAMES[i].split(" ")
+    Tutor.create(
         id: i + 1,
-        type: Tutor,
+        # type: Tutor,
         first_name: name[0],
         last_name: name[1],
         email: "#{name[0].downcase}_#{name[1].downcase}@email",
-        # password: "password",
+        password: "password",
         resume: Faker::Lorem.paragraph(sentence_count: 4),
         zoom_link: Faker::Barcode.isbn, 
         rating: rand(1..10),
@@ -32,14 +59,14 @@ names = NAMES.uniq
 end
 
 25.times do | i |
-    name = names[i].split(" ")
-    User.create(
+    name = NAMES[i + 5].split(" ")
+    Student.create(
         id: i + 6,
-        type: Student,
+        # type: Student,
         first_name: name[0],
         last_name: name[1],
         email: "#{name[0].downcase}_#{name[1].downcase}@email",
-        # password: "password",
+        password: "password",
         about_me: Faker::Movie.quote,
         level: rand(1..100),
         gold_stars: rand(1..50),
@@ -47,13 +74,13 @@ end
     )
 end
 
-# binding.pry
+binding.pry
 
-50.times do | i |
-    Appointment.create(
-        id: i + 1,
-        date_time: Faker::Date.between(from: '2020-11-20', to: '2020-12-20'),
-        tutor_id: rand(1..5),
-        student_id: rand(1..25)
-    )
-end
+# 50.times do | i |
+#     Appointment.create(
+#         id: i + 1,
+#         date_time: Faker::Date.between(from: '2020-11-20', to: '2020-12-20'),
+#         tutor_id: rand(1..5),
+#         student_id: rand(6..30)
+#     )
+# end
