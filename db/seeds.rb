@@ -3,8 +3,7 @@
 # rails g model Appointment date_time:datetime tutor:belongs_to student:belongs_to --no-test-framework
 
 # User.delete_all
-Tutor.delete_all
-Student.delete_all
+User.delete_all
 Appointment.delete_all
 
 NAMES = []
@@ -17,8 +16,9 @@ names = NAMES.uniq
 
 5.times do | i |
     name = names[i].split(" ")
-    Tutor.create(
+    User.create(
         id: i + 1,
+        type: Tutor,
         first_name: name[0],
         last_name: name[1],
         email: "#{name[0].downcase}_#{name[1].downcase}@email",
@@ -33,7 +33,8 @@ end
 25.times do | i |
     name = names[i].split(" ")
     Student.create(
-        id: i + 1,
+        id: i + 6,
+        type: Student,
         first_name: name[0],
         last_name: name[1],
         email: "#{name[0].downcase}_#{name[1].downcase}@email",
