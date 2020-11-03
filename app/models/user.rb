@@ -1,9 +1,8 @@
 class User < ApplicationRecord
-    self.abstract_class = true
-    validates :first_name, :last_name, :email, presence: true
-    validates :email, uniqueness: true
-    validate :valid_email?
-    has_secure_password
+    # validates :first_name, :last_name, :email, presence: true
+    # validates :email, uniqueness: true
+    # validate :valid_email?
+    # has_secure_password
 
     def valid_email?
         if :email !=~ /^(.+)@(.+)$/ # should it be :email or email ???

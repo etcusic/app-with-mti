@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_03_141205) do
+ActiveRecord::Schema.define(version: 2020_11_03_142222) do
 
   create_table "appointments", force: :cascade do |t|
     t.datetime "date_time"
@@ -20,6 +20,12 @@ ActiveRecord::Schema.define(version: 2020_11_03_141205) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["student_id"], name: "index_appointments_on_student_id"
     t.index ["tutor_id"], name: "index_appointments_on_tutor_id"
+  end
+
+  create_table "students", force: :cascade do |t|
+  end
+
+  create_table "tutors", force: :cascade do |t|
   end
 
   create_table "users", force: :cascade do |t|
