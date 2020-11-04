@@ -7,7 +7,7 @@ class UsersController < ApplicationController
     end
 
     def create
-        # incorporate invalid errors
+        # incorporate errors for invalid input
         @user = User.new(user_params)
         if @user.save
             # redirect_to "show_user_path"
@@ -16,7 +16,7 @@ class UsersController < ApplicationController
             elsif @user.class == Student
                 redirect_to show_student_path(@user)
             else
-                redirect_to "application#home"
+                redirect_to "/"
             end
         end
     end
@@ -34,7 +34,7 @@ class UsersController < ApplicationController
             end
         else
             # add error message?
-            redirect_to "application#home"
+            redirect_to "/"
         end
     end
 
