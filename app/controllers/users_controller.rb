@@ -22,10 +22,10 @@ class UsersController < ApplicationController
     end
 
     def show
-        # binding.pry
+        binding.pry
         params.permit(:id)
         if params[:id].to_i == @user.id
-            if user.is_tutor?
+            if @user.is_tutor?
                 user_path(@user)
             elsif user.is_student?
                 user_path(@user)
@@ -50,7 +50,7 @@ class UsersController < ApplicationController
     private
 
     def user
-        @user = User.find_by_id(params[:id])
+        @user = User.find_by_id(session[:user_id])
     end
 
     def user_params
@@ -58,3 +58,8 @@ class UsersController < ApplicationController
     end
 
 end
+
+UsersController to do list:
+    - create a before_action #valid_request? to check for users accessing what they're allowed - does this go in ApplicationController?
+    - errors for invalid input in #create action
+    - 

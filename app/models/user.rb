@@ -3,6 +3,10 @@ class User < ApplicationRecord
     validates :email, uniqueness: true, format: { with: /\A[^@\s]+@[^@\s]+\z/, message: "only allows letters with @" }
     has_secure_password
 
+    def full_name
+        "#{self.first_name} #{self.last_name}"
+    end
+
     def is_tutor?
         self.class == Tutor
     end

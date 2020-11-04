@@ -10,9 +10,12 @@ class ApplicationController < ActionController::Base
 
     def require_login
         # (if !helpers.current_user) => alternative to include ApplicationHelper at top of AppController
-        if !current_user
+        if !session[:user_id]
+            # create error to go along with it
             redirect_to "/login"
         end
     end
+
+    #valid_request? method for users to see what they're allowed to - here or users controller? I think here
 
 end

@@ -4,33 +4,45 @@ class SessionsController < ApplicationController
     def new
     end
 
-    #what the fuck is going on with my login???
     def create
-        # binding.pry
         @user = User.find_by(email: session_params[:email])
         if @user && @user.authenticate(session_params[:password])
-            session[:user_id] = @user.id
+            initialize_session
             redirect_to user_path(@user)
         else
-            redirect_to '/'
+            # check for errors and redirect to errors page
+            redirect_to '/login'
         end
     end
 
     def create_with_omniauth
-        name = auth['info']['name'].split(" ")
-        @user = User.find_or_create_by(email: auth['info']['email']) do |u|
-            u.first_name = name[0]
-            u.last_name = name[1]
-            u.password = "password" # refactor this to something random
-            u.image = auth['info']['image']
-            u.uid = auth['uid']
+        @user = User.find_by(uid: auth['uid'])
+        if @user
+            initialize_session
+            redirect_to @user
+        else
+            name = auth['info']['name'].split(" ")
+            @user = User.create(
+                uid: auth['uid'],
+                email: auth['info']['email'],
+                first_name: name[0],
+                last_name: name[1],
+                image: auth['info']['image'],
+                password: "password" # refactor this to something random                
+            )
+            if @user.errors.any?
+                #create errors page
+                #refactor this into a helper method?
+                redirect_to '/'
+            else
+                initialize_session
+                redirect_to edit_user_path
+            end
         end
-          session[:user_id] = @user.id
-          redirect_to @user
+        
     end
 
     def destroy
-        binding.pry
         session.delete(:user_id)
         redirect_to '/'
     end
@@ -41,12 +53,19 @@ class SessionsController < ApplicationController
         params.require(:user).permit(:email, :password)
     end
 
+    def initialize_session
+        session[:user_id] = @user.id
+    end
+
     def auth
         request.env['omniauth.auth']
     end
-
-    def collect_errors
-
-    end
     
 end
+
+# SessionsController to do list:
+#     - Errors for #create
+#     - Errors for #create_with_omniauth
+#     - #errors? helper method => @user.errors.any? ? redirect_to '/errors' : redirect_to @user
+#     - set password to random in create_with_omniauth
+#     - revisit require_login in ApplicationController
