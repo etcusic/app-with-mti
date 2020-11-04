@@ -69,3 +69,4 @@ end
 #     - #errors? helper method => @user.errors.any? ? redirect_to '/errors' : redirect_to @user
 #     - set password to random in create_with_omniauth
 #     - revisit require_login in ApplicationController
+#     - #destroy action => are you sure? message (alert?)

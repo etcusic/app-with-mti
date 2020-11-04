@@ -10,28 +10,18 @@ class UsersController < ApplicationController
         # incorporate errors for invalid input
         @user = User.new(user_params)
         if @user.save
-            # redirect_to "show_user_path"
-            if @user.class == Tutor
-                redirect_to show_tutor_path(@user)
-            elsif @user.class == Student
-                redirect_to show_student_path(@user)
-            else
-                redirect_to "/"
-            end
+            user_path(@user)
+        else
+            # error page
+            redirect_to new_user_path
         end
     end
 
     def show
-        binding.pry
+        # binding.pry
         params.permit(:id)
         if params[:id].to_i == @user.id
-            if @user.is_tutor?
-                user_path(@user)
-            elsif user.is_student?
-                user_path(@user)
-            else
-                #error - wtf?
-            end
+            user_path(@user)
         else
             # add error message?
             redirect_to "/"
@@ -39,12 +29,32 @@ class UsersController < ApplicationController
     end
 
     def edit
+        # validate user request
+        if current_user.is_tutor?
+            edit_tutor_path(current_user)
+        elsif current_user.is_student?
+            edit_student_path(current_user)
+        else
+            #should not be an else, but....
+            redirect_to '/'
+        end
     end
 
     def update
+        #validate user 
+        # nest hash - basic user info & tutor/student info??
+
+        # if current_user.is_tutor?
+        #     current_user.update_tutor(tutor_params)
+        # elsif current_user.is_student?
+        #     current_user.update_student(student_params)
+        # end
     end
 
     def destroy
+        current_user.destroy
+        session.destroy
+        redirect_to 'sessions#destroy'
     end
 
     private
@@ -57,9 +67,23 @@ class UsersController < ApplicationController
         params.require(:user).permit(:id, :first_name, :last_name, :password)
     end
 
+    # def tutor_params
+    #     params.require(:user).permit(:first_name, :last_name, :password, :resume, :rating, :zoom_link, :puppets, :image)
+    # end
+
+    # def student_params
+    #     params.require(:user).permit(:id, :first_name, :last_name, :password, :about_me, :level, :gold_stars, :helicopter_parent, :image)
+    # end
+
 end
 
-UsersController to do list:
-    - create a before_action #valid_request? to check for users accessing what they're allowed - does this go in ApplicationController?
-    - errors for invalid input in #create action
-    - 
+# UsersController to do list:
+#     - create a before_action #valid_request? to check for users accessing what they're allowed (show, edit, update, destroy) - does this go in ApplicationController?
+#     - errors for invalid input in #create action
+#     - errors for invalid #update
+#     - warning for #destroy
+
+# TutorsAndStudentsController
+#     - #update => divide into basic user info hash and tutor/student hash
+#     - refactor tutor_params and student_params according to what works
+#     - revisit routes to trim down what is necessary
