@@ -10,6 +10,14 @@
   </head>
 
   <body>
+    
     <%= yield %>
+    
+    <button><%= link_to "Sign Up", new_user_path %></button>
+    <button><%= link_to "Log In", '/login' %></button>
+    <button><%= link_to "Log Out", '/logout' %></button>
+    <button><%= link_to "Home Page", '/' %></button>
+    <button><%= link_to('Log in with Facebook', '/auth/facebook') %></button>
+
   </body>
 </html>

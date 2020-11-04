@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_03_144349) do
+ActiveRecord::Schema.define(version: 2020_11_04_131249) do
 
   create_table "appointments", force: :cascade do |t|
     t.datetime "date_time"
@@ -42,6 +42,8 @@ ActiveRecord::Schema.define(version: 2020_11_03_144349) do
     t.integer "gold_stars"
     t.boolean "helicopter_parent"
     t.string "type"
+    t.string "uid"
+    t.string "image"
   end
 
   add_foreign_key "appointments", "students"

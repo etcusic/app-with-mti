@@ -49,7 +49,7 @@ NAMES = [
         # type: Tutor,
         first_name: name[0],
         last_name: name[1],
-        email: "#{name[0].downcase}_#{name[1].downcase}@email",
+        email: "#{name[0].downcase}_#{name[1].downcase}@mail",
         password: "password",
         resume: Faker::Lorem.paragraph(sentence_count: 4),
         zoom_link: Faker::Barcode.isbn, 
