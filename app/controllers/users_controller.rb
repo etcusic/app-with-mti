@@ -7,20 +7,35 @@ class UsersController < ApplicationController
     end
 
     def create
-        # binding.pry
+        # incorporate invalid errors
         @user = User.new(user_params)
         if @user.save
-            redirect_to "show_user_path"
+            # redirect_to "show_user_path"
+            if @user.class == Tutor
+                redirect_to show_tutor_path(@user)
+            elsif @user.class == Student
+                redirect_to show_student_path(@user)
+            else
+                redirect_to "application#home"
+            end
         end
     end
 
     def show
-        binding.pry
-        # if user.class == Tutor
-        #     redirect_to "tutors#show"
-        # else 
-        #     redirect_to "students#show"
-        # end
+        # binding.pry
+        params.permit(:id)
+        if params[:id].to_i == @user.id
+            if user.is_tutor?
+                user_path(@user)
+            elsif user.is_student?
+                user_path(@user)
+            else
+                #error - wtf?
+            end
+        else
+            # add error message?
+            redirect_to "application#home"
+        end
     end
 
     def edit
@@ -39,7 +54,7 @@ class UsersController < ApplicationController
     end
 
     def user_params
-        params.require(:user).permit(:first_name, :last_name, :password)
+        params.require(:user).permit(:id, :first_name, :last_name, :password)
     end
 
 end

@@ -9,33 +9,29 @@ class SessionsController < ApplicationController
         # binding.pry
         @user = User.find_by(email: session_params[:email])
         if @user && @user.authenticate(session_params[:password])
-            # binding.pry
-            session[:id] = @user.id
-            redirect_to @user
-            # redirect_to user_path(@user)
+            session[:user_id] = @user.id
+            redirect_to user_path(@user)
         else
             redirect_to 'application#home'
         end
     end
 
     def create_with_omniauth
-        # find by ID => if no id found, redirect to sign up page
         name = auth['info']['name'].split(" ")
-        # binding.pry
-        @user = User.find_or_create_by(uid: auth['uid']) do |u|
+        @user = User.find_or_create_by(email: auth['info']['email']) do |u|
             u.first_name = name[0]
             u.last_name = name[1]
-            u.email = auth['info']['email']
+            u.password = "password" # refactor this to something random
             u.image = auth['info']['image']
+            u.uid = auth['uid']
         end
-       
           session[:user_id] = @user.id
-    #    binding.pry
           redirect_to @user
     end
 
     def destroy
-        session.delete :name
+        session.delete(:user_id)
+        redirect_to 'application#home'
     end
 
     private
@@ -46,6 +42,10 @@ class SessionsController < ApplicationController
 
     def auth
         request.env['omniauth.auth']
+    end
+
+    def collect_errors
+
     end
     
 end
