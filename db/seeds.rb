@@ -3,8 +3,8 @@
 # rails g model Appointment date_time:datetime tutor:belongs_to student:belongs_to --no-test-framework
 
 User.delete_all
-Tutor.delete_all
-Student.delete_all
+# Tutor.delete_all
+# Student.delete_all
 Appointment.delete_all
 
 NAMES = [
@@ -46,7 +46,6 @@ NAMES = [
     name = NAMES[i].split(" ")
     Tutor.create(
         id: i + 1,
-        # type: Tutor,
         first_name: name[0],
         last_name: name[1],
         email: "#{name[0].downcase}_#{name[1].downcase}@mail",
@@ -62,7 +61,6 @@ end
     name = NAMES[i + 5].split(" ")
     Student.create(
         id: i + 6,
-        # type: Student,
         first_name: name[0],
         last_name: name[1],
         email: "#{name[0].downcase}_#{name[1].downcase}@email",
@@ -74,13 +72,13 @@ end
     )
 end
 
-binding.pry
+# binding.pry
 
-# 50.times do | i |
-#     Appointment.create(
-#         id: i + 1,
-#         date_time: Faker::Date.between(from: '2020-11-20', to: '2020-12-20'),
-#         tutor_id: rand(1..5),
-#         student_id: rand(6..30)
-#     )
-# end
+50.times do | i |
+    Appointment.create(
+        id: i + 1,
+        date_time: Faker::Date.between(from: '2020-11-20', to: '2020-12-20'),
+        tutor_id: rand(1..5),
+        student_id: rand(6..30)
+    )
+end
