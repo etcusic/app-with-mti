@@ -7,14 +7,7 @@ class UsersController < ApplicationController
     end
 
     def create
-        # incorporate errors for invalid input
-        @user = User.new(user_params)
-        if @user.save
-            user_path(@user)
-        else
-            # error page
-            redirect_to new_user_path
-        end
+        
     end
 
     def show
@@ -40,7 +33,8 @@ class UsersController < ApplicationController
         end
     end
 
-    def update
+    # def update
+        #currently being handled in tutors & students => will need to eliminate this route if that stays
         #validate user 
         # nest hash - basic user info & tutor/student info??
 
@@ -49,9 +43,10 @@ class UsersController < ApplicationController
         # elsif current_user.is_student?
         #     current_user.update_student(student_params)
         # end
-    end
+    # end
 
     def destroy
+        # warning/alert message
         current_user.destroy
         session.destroy
         redirect_to 'sessions#destroy'
@@ -64,15 +59,27 @@ class UsersController < ApplicationController
     end
 
     def user_params
-        params.require(:user).permit(:id, :first_name, :last_name, :password)
+        params.require(:user).permit(
+            :id, :type, :first_name, :last_name, :password, :image, 
+            :resume, :zoom_link, :puppets, :rating,
+            :about_me, :level, :helicopter_parent, :gold_stars
+        )
+    end
+
+    def redirect_according_to_type
+        if @user.type == Tutor
+            new_tutor_path
+        elsif @user.type == Student
+            new_student_path
+        end
     end
 
     # def tutor_params
-    #     params.require(:user).permit(:first_name, :last_name, :password, :resume, :rating, :zoom_link, :puppets, :image)
+    #     params.require(:tutor).permit(:resume, :zoom_link, :puppets)
     # end
 
     # def student_params
-    #     params.require(:user).permit(:id, :first_name, :last_name, :password, :about_me, :level, :gold_stars, :helicopter_parent, :image)
+    #     params.require(:student).permit(:about_me, :level, :helicopter_parent)
     # end
 
 end

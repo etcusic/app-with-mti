@@ -35,6 +35,8 @@ class SessionsController < ApplicationController
                 #refactor this into a helper method?
                 redirect_to '/'
             else
+                # new user must choose student or tutor (maybe don't use create until new user finishes editing process)
+                # flash message? => update password
                 initialize_session
                 redirect_to edit_user_path
             end
@@ -68,5 +70,6 @@ end
 #     - Errors for #create_with_omniauth
 #     - #errors? helper method => @user.errors.any? ? redirect_to '/errors' : redirect_to @user
 #     - set password to random in create_with_omniauth
+#     - Omniauth user set up => student or tutor
 #     - revisit require_login in ApplicationController
 #     - #destroy action => are you sure? message (alert?)

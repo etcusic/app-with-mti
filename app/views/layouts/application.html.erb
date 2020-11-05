@@ -13,11 +13,12 @@
     
     <%= yield %>
     
-    <% if current_user %>
+    <% if session[:user_id] %>
       <button><%= link_to "Profile", user_path(current_user) %></button>
       <button><%= link_to "Log Out", '/logout', method: 'post' %></button>
     <% else %>
-      <button><%= link_to "Sign Up", new_user_path %></button>
+      <button><%= link_to "Become a Tutor!", new_tutor_path %></button>
+      <button><%= link_to "Enroll as a Student!", new_student_path %></button>
       <button><%= link_to "Log In", '/login' %></button>
       <button><%= link_to('Log in with Facebook', '/auth/facebook') %></button>
     <% end %>
