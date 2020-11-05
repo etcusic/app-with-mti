@@ -10,12 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_04_131249) do
+ActiveRecord::Schema.define(version: 2020_11_05_141725) do
 
   create_table "appointments", force: :cascade do |t|
     t.datetime "date_time"
-    t.integer "tutor_id", null: false
-    t.integer "student_id", null: false
+    t.integer "tutor_id"
+    t.integer "student_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["student_id"], name: "index_appointments_on_student_id"
@@ -46,6 +46,4 @@ ActiveRecord::Schema.define(version: 2020_11_04_131249) do
     t.string "image"
   end
 
-  add_foreign_key "appointments", "students"
-  add_foreign_key "appointments", "tutors"
 end

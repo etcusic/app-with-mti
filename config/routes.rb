@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  # root 'application#home'
+  
+  root 'application#home'
+
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'
   post '/logout' => 'sessions#destroy'
@@ -8,7 +10,7 @@ Rails.application.routes.draw do
   resources :users
   resources :tutors
   resources :students
-  resources :appointments # or should I only put appointment resource in nested routes???
+  resources :appointments # or should I only put appointment resource in nested routes??? 
 
-  root 'application#home'
+  # root 'application#home'
 end

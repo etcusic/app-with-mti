@@ -19,3 +19,4 @@ class ApplicationController < ActionController::Base
     #valid_request? method for users to see what they're allowed to - here or users controller? I think here
 
 end
+
