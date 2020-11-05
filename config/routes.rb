@@ -7,9 +7,18 @@ Rails.application.routes.draw do
   post '/logout' => 'sessions#destroy'
   get '/auth/facebook/callback' => 'sessions#create_with_omniauth'
 
-  resources :users
-  resources :tutors
-  resources :students
+  resources :users do
+    resources :appointments
+  end 
+
+  resources :tutors do
+    resources :appointments
+  end 
+
+  resources :students do
+    resources :appointments
+  end 
+
   resources :appointments # or should I only put appointment resource in nested routes??? 
 
   # root 'application#home'

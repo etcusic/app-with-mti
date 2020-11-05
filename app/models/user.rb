@@ -18,5 +18,9 @@ class User < ApplicationRecord
     def is_student?
         self.class == Student
     end
+
+    def appointments_by_date
+        self.appointments.sort_by{|appt| appt.date_time}
+    end
     
 end

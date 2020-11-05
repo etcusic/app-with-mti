@@ -1,0 +1,24 @@
+Models:
+- User (parent class for Tutor & Student)
+- CustomValidators class => user sign in validations
+- Tutor => has_many :appointments; has_many :students, through: :appointments
+- Student => has_many :appointments; has_many: :tutors, through: :appointments
+- Appointment => belongs_to :tutor & :student
+
+Controllers:
+- 
+
+Views:
+- 
+
+Next Level Priorities
+[ ] User parent class => for tutors & students
+[ ] CustomValidators class => make validations (one for tutors & one for students???)
+[ ] def set_availability => in Tutor class 
+[ ] views/nachos/tutor => set appointments based on set_availability
+[ ]
+[ ] Admin class => allows admin user to see all info of tutors and students
+[ ] Lesson class => belongs_to :tutor
+[ ] Parent class => has_many :students
+[ ]
+

@@ -1,0 +1,25 @@
+IDEAS:
+- customized user authentication
+- Join Tables => when to use them and when to not
+- resources => what all it entails, when to use, when not to use
+- User parent class => users table? tutors/students belongs_to :user || other ways to do it???
+
+
+User parent class
+- users table => tutors/students belongs_to :user
+- other ways:
+    1) User class => tutors/students modules (can't achieve the has_many through relationship this way)
+    2) 
+
+
+Join Tables links:
+- https://goiabada.blog/to-join-or-not-to-join-an-act-of-includes-f6728fcefea3 
+- https://andycroll.com/ruby/be-suspicious-of-join-tables/ 
+- https://en.wikipedia.org/wiki/Associative_entity 
+- https://stackoverflow.com/questions/34565148/what-is-the-use-of-join-table-in-rails#:~:text=Join%20tables%20are%20populated%20with,For%20example...&text=In%20short%2C%20if%20you%20want,to%20the%20relative%20foreign%20keys. 
+
+
+Resources:
+- Declares all routes => index, show, new, edit, create, update and destroy
+- https://guides.rubyonrails.org/routing.html#resource-routing-the-rails-default
+- 

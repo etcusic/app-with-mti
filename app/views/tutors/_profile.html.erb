@@ -1,1 +1,8 @@
 <h2><%= current_user.resume %></h2>
+
+<h2>Appointments:</h2>
+<ul>
+     <% current_user.appointments_by_date.each do |appt| %>
+        <li><%= "#{appt.tutor.full_name}: #{appt.time}" %></li>
+    <% end %>
+</ul>
