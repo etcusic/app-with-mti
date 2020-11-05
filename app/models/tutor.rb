@@ -3,6 +3,10 @@ class Tutor < User
     has_many :students, through: :appointments
     validates :resume, :zoom_link, presence: true
 
+    def self.ranked_tutors
+        sorted = Tutor.all.sort_by{|t| t.rating}.reverse
+    end
+
     def update_tutor(hash)
         #refactor this for only tutor specific info
         self.update(

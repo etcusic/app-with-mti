@@ -2,6 +2,14 @@ class TutorsController < ApplicationController
     before_action :tutor, only: [:show, :edit, :update, :destroy]
     skip_before_action :require_login, only: [:new, :create]
 
+    def index
+        @tutors = Tutor.all
+    end
+
+    def rated
+        @tutors = Tutor.
+    end
+
     def new
         @tutor = Tutor.new
     end

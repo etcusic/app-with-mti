@@ -1,6 +1,7 @@
 class Appointment < ApplicationRecord
   belongs_to :tutor
   belongs_to :student
+  
 
   def self.new_with_params(hash)
       date = DateTime.new(
@@ -14,7 +15,9 @@ class Appointment < ApplicationRecord
   end
 
   def time
-    self.date_time.strftime("%A, %d %b %Y @ %l:%M %p")
+    self.date_time.strftime("%A, %d %b %Y - %l:%M %p")
   end
 
 end
+
+# Appointment.create(date_time: DateTime.new(2011, 11, 11))

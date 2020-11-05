@@ -63,7 +63,7 @@ end
         id: i + 6,
         first_name: name[0],
         last_name: name[1],
-        email: "#{name[0].downcase}_#{name[1].downcase}@email",
+        email: "#{name[0].downcase}_#{name[1].downcase}@mail",
         password: "password",
         about_me: Faker::Movie.quote,
         level: rand(1..100),
@@ -77,7 +77,7 @@ end
 50.times do | i |
     Appointment.create(
         id: i + 1,
-        date_time: Faker::Date.between(from: '2020-11-20', to: '2020-12-20'),
+        date_time: Faker::Time.between_dates(from: Date.today + 10, to: Date.today + 40, period: :day),
         tutor_id: rand(1..5),
         student_id: rand(6..30)
     )

@@ -3,6 +3,6 @@
 <h2>Appointments:</h2>
 <ul>
      <% current_user.appointments_by_date.each do |appt| %>
-        <li><%= "#{appt.tutor.full_name}: #{appt.time}" %></li>
+        <li><%= "#{appt.student.full_name}: #{appt.time}" %></li>
     <% end %>
 </ul>

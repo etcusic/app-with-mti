@@ -5,3 +5,6 @@
     <li>Student: <%= @appt.student.full_name %></li>
     <li>When: <%= @appt.time %></li>
 </ul>
+
+<button><%= link_to "Profile", user_path(current_user) %></button>
+<button><%= link_to "Log Out", '/logout', method: 'post' %></button>
