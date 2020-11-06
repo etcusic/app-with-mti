@@ -12,7 +12,8 @@ class UsersController < ApplicationController
             flash[:error] = "Invalid password/confirmation. Please try again."
         elsif @user.save   
             session[:user_id] = @user.id
-            edit_user_path(@user)
+            # binding.pry
+            redirect_to edit_user_path(@user)
         else
             render :new
         end
@@ -32,15 +33,7 @@ class UsersController < ApplicationController
     end
 
     def edit
-        # validate user request
-        if current_user.is_tutor?
-            edit_tutor_path(current_user)
-        elsif current_user.is_student?
-            edit_student_path(current_user)
-        else
-            #should not be an else, but....
-            redirect_to '/'
-        end
+        
     end
 
     # def update

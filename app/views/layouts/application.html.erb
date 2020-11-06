@@ -29,6 +29,7 @@
     Practice:
     <button><%= link_to "New User", new_user_path %></button>    
     <button><%= link_to "Home Page", '/' %></button>
+    <button><%= link_to "Log In", '/login' %></button>
     <% if session[:user_id] %>
       <button><%= link_to "Profile", user_path(current_user) %></button>
       <button><%= link_to "Log Out", '/logout', method: 'post' %></button>
