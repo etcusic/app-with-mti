@@ -1,8 +1,13 @@
+
 <% if @tutor.errors.any? %>
-        <h5 class="error"><%= @tutor.errors.full_messages.to_sentence %></h5>
+    <ul>
+        <% @tutor.errors.messages.each do |msg| %>
+            <li><%= display_errors(msg) %></li>
+        <% end %>
+    </ul>
 <% end %>
 
-<%= form_with model: @tutor do |f| %>
+<%= form_with model: @tutor, local: true do |f| %>
 
     <%= f.label :first_name, "First Name" %>
     <%= f.text_field :first_name %><br>

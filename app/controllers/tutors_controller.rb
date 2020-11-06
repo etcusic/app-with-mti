@@ -18,7 +18,8 @@ class TutorsController < ApplicationController
         else
             # error page
             # binding.pry
-            new_tutor_path
+            render :new
+            # new_tutor_path(@tutor)
         end
     end
 
