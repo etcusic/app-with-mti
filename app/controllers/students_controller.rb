@@ -39,7 +39,11 @@ class StudentsController < ApplicationController
     end
 
     def destroy
-        #bind
+        # warning/alert message
+        binding.pry
+        current_user.appointments.destroy_all
+        current_user.destroy
+        redirect_to 'sessions#destroy'
     end
 
     private

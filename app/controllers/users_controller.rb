@@ -48,6 +48,7 @@ class UsersController < ApplicationController
     def destroy
         # warning/alert message
         binding.pry
+        current_user.appointments.destroy_all
         current_user.destroy
         redirect_to 'sessions#destroy'
     end

@@ -30,4 +30,6 @@
 
 <h3>-- OR --</h3>
 
-<button><%= link_to "Delete Yo' Self!", delete_user_path %></button><br>
+<%= button_to "Delete Yo' Self", tutor_path(@tutor), method: :delete, confirm: "Are you sure?" %>
+
+<%# { confirm: "Are you sure?" } %>

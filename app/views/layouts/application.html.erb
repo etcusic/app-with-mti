@@ -16,6 +16,8 @@
     <% if session[:user_id] %>
       <button><%= link_to "Profile", user_path(current_user) %></button>
       <button><%= link_to "Log Out", '/logout', method: 'post' %></button>
+    <button><%= link_to "Edit Student", "/students/#{current_user.id}/edit" %></button>
+    <button><%= link_to "Edit Tutor", "/tutors/#{current_user.id}/edit" %></button>
       <% if User.find_by_id(session[:user_id]).is_student? %>
         <button><%= link_to "Create Appointment!", "/users/#{current_user.id}/appointments/new", method: 'get' %></button>
         <% end %>
@@ -29,8 +31,6 @@
     <button><%= link_to "Home Page", '/' %></button>
     <button><%= link_to "All Tutors!", '/tutors' %></button>
     <button><%= link_to "All Students!", '/students' %></button>
-    <button><%= link_to "Edit Student", "/students/#{current_user.id}/edit" %></button>
-    <button><%= link_to "Edit Tutor", "/tutors/#{current_user.id}/edit" %></button>
 
   </body>
 </html>

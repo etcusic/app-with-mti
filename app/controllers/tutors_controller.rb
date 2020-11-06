@@ -33,7 +33,16 @@ class TutorsController < ApplicationController
         binding.pry
         #validate user first
         #validate update info => current_user.errors
-        current_user.update_tutor(tutor_params)
+        @tutor.update(tutor_params)
+        tutor_path(@tutor)
+    end
+
+    def destroy
+        # warning/alert message
+        binding.pry
+        current_user.appointments.destroy_all
+        current_user.destroy
+        redirect_to 'sessions#destroy'
     end
 
     private
