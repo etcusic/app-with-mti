@@ -17,7 +17,7 @@ class StudentsController < ApplicationController
             redirect_to "/users/#{@student.id}"
         else
             # error page
-            redirect_to new_student_path
+            render :new
         end
     end
 
@@ -34,8 +34,11 @@ class StudentsController < ApplicationController
         # binding.pry
         #validate user first
         #validate update info => current_user.errors
-        @student.update(student_params)
-        student_path(@student)
+        if @student.update(student_params)
+            student_path(@student)
+        else
+            render :edit
+        end
     end
 
     def destroy

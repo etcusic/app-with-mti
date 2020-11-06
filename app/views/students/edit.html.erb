@@ -1,3 +1,11 @@
+<% if @student.errors.any? %>
+    <ul>
+        <% @student.errors.messages.each do |msg| %>
+            <li><%= display_errors(msg) %></li>
+        <% end %>
+    </ul>
+<% end %>
+
 <%= form_for(@student) do |f| %>
 
     <%= f.label :first_name, "First Name" %>

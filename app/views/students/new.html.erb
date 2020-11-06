@@ -1,4 +1,12 @@
-<%= form_with model: @student do |f| %>
+<% if @student.errors.any? %>
+    <ul>
+        <% @student.errors.messages.each do |msg| %>
+            <li><%= display_errors(msg) %></li>
+        <% end %>
+    </ul>
+<% end %>
+
+<%= form_with model: @student, local: true do |f| %>
 
     <%= f.label :first_name, "First Name" %>
     <%= f.text_field :first_name %><br>

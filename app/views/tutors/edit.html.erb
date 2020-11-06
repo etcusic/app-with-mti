@@ -1,7 +1,10 @@
 <% if @tutor.errors.any? %>
-        <h5 class="error"><%= @tutor.errors.full_messages.to_sentence %></h5>
+    <ul>
+        <% @tutor.errors.messages.each do |msg| %>
+            <li><%= display_errors(msg) %></li>
+        <% end %>
+    </ul>
 <% end %>
-<%# doesn't work yet %>
 
 <%= form_for(@tutor) do |f| %>
 

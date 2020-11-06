@@ -17,9 +17,7 @@ class TutorsController < ApplicationController
             redirect_to "/users/#{@tutor.id}"
         else
             # error page
-            # binding.pry
             render :new
-            # new_tutor_path(@tutor)
         end
     end
 
@@ -38,7 +36,8 @@ class TutorsController < ApplicationController
         if @tutor.update(tutor_params)
             tutor_path(@tutor)
         else 
-            edit_tutor_path(@tutor)
+            render :edit
+            # edit_tutor_path(@tutor)
         end
     end
 
