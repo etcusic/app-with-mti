@@ -10,8 +10,21 @@
   </head>
 
   <body>
-    
-    <%= yield %>
+    <% if flash.any? %>
+      <h3>There Be Some Problems, yo!</h3>
+      <div>
+        <ul>
+          <% flash.each do |type, msg| %>
+            <li><%= "#{type}: #{msg}" %></li>
+          <% end %>
+        </ul>
+      </div>
+      <h4>Click "Home Page" or refresh the page to move on.</h4>
+    <% else %>
+      <%= yield %>
+    <% end %>
+
+    <%# PUT THESE LINKS AND LOGIC INTO A PARTIAL %>
     
     <% if session[:user_id] %>
       <button><%= link_to "Profile", user_path(current_user) %></button>

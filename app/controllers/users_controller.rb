@@ -17,7 +17,8 @@ class UsersController < ApplicationController
             user_path(@user)
         else
             # add error message?
-            redirect_to "/"
+            flash[:error] = "You're not Ron."
+            redirect_to "/" 
         end
     end
 
@@ -86,6 +87,7 @@ class UsersController < ApplicationController
 end
 
 # UsersController to do list:
+#     - add error messages to User/Tutor/Student models?
 #     - create a before_action #valid_request? to check for users accessing what they're allowed (show, edit, update, destroy) - does this go in ApplicationController?
 #     - errors for invalid input in #create action
 #     - errors for invalid #update
