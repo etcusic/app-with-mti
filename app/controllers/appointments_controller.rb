@@ -16,7 +16,7 @@ class AppointmentsController < ApplicationController
            redirect_to student_path(current_user)
         else
             # error => means they did not select a tutor
-            redirect_to new_appointment_path
+            render :new
         end
     end
 

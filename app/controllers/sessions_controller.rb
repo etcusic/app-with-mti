@@ -11,6 +11,7 @@ class SessionsController < ApplicationController
             redirect_to user_path(@user)
         else
             # check for errors and redirect to errors page
+            flash[:error] = "Invalid email or password. Please try again."
             redirect_to '/login'
         end
     end

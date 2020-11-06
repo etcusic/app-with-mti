@@ -1,5 +1,13 @@
 <h1>Make an Appointment!</h1>
 
+<% if @appt.errors.any? %>
+    <ul>
+        <% @appt.errors.messages.each do |msg| %>
+            <li><%= display_errors(msg) %></li>
+        <% end %>
+    </ul>
+<% end %>
+
 <%= form_for(@appt) do |f| %>
 
     <%= f.label :tutor_id, "Pick Tutor: " %>
