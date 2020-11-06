@@ -29,6 +29,8 @@
     <button><%= link_to "Home Page", '/' %></button>
     <button><%= link_to "All Tutors!", '/tutors' %></button>
     <button><%= link_to "All Students!", '/students' %></button>
+    <button><%= link_to "Edit Student", "/students/#{current_user.id}/edit" %></button>
+    <button><%= link_to "Edit Tutor", "/tutors/#{current_user.id}/edit" %></button>
 
   </body>
 </html>

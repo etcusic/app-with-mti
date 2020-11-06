@@ -1,0 +1,33 @@
+<%= form_for(@tutor) do |f| %>
+
+    <%= f.label :first_name, "First Name" %>
+    <%= f.text_field :first_name %><br>
+
+    <%= f.label :last_name, "Last Name" %>
+    <%= f.text_field :last_name %><br>
+
+    <%= f.label :email, "Email" %>
+    <%= f.text_field :email %><br>
+
+    <%= f.label :password, "Password" %>
+    <%= f.text_field :password %><br>
+    
+    <%= f.label :image, "Image Url:" %>
+    <%= f.text_field :image %><br>
+    
+    <%= f.label :zoom_link, "Zoom Link" %>
+    <%= f.text_field :zoom_link %><br>
+
+    <%= f.label :resume, "Resume:" %><br>
+    <%= f.text_area :resume %><br>
+
+    <%= f.label :puppets, "Puppets? [y/n]" %>
+    <%= f.check_box :puppets %><br>
+    
+    <%= f.submit "Submit Profile!" %>
+
+<% end %>
+
+<h3>-- OR --</h3>
+
+<button><%= link_to "Delete Yo' Self!", delete_user_path %></button><br>

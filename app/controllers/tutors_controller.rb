@@ -22,7 +22,7 @@ class TutorsController < ApplicationController
     end
 
     def show
-
+        # check for if current_user
     end
 
     def edit

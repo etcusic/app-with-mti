@@ -31,9 +31,15 @@ class StudentsController < ApplicationController
     end
 
     def update
+        # binding.pry
         #validate user first
         #validate update info => current_user.errors
-        current_user.update_student(student_params)
+        @student.update(student_params)
+        student_path(@student)
+    end
+
+    def destroy
+        #bind
     end
 
     private

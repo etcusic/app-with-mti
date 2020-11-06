@@ -47,8 +47,8 @@ class UsersController < ApplicationController
 
     def destroy
         # warning/alert message
+        binding.pry
         current_user.destroy
-        session.destroy
         redirect_to 'sessions#destroy'
     end
 
