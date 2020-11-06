@@ -11,7 +11,6 @@ class AppointmentsController < ApplicationController
     end
 
     def create  
-        binding.pry
         @appt = Appointment.new_with_params(appt_params)
         if @appt.save
            redirect_to student_path(current_user)

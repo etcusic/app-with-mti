@@ -3,10 +3,6 @@ class TutorsController < ApplicationController
     skip_before_action :require_login, only: [:new, :create]
 
     def index
-        @tutors = Tutor.all
-    end
-
-    def rated
         @tutors = Tutor.ranked_tutors
     end
 
@@ -31,7 +27,6 @@ class TutorsController < ApplicationController
 
     def edit
         # validate user request
-        current_user
     end
 
     def update

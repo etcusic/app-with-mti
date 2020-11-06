@@ -2,6 +2,10 @@ class StudentsController < ApplicationController
     before_action :student, only: [:show, :edit, :update, :destroy]
     skip_before_action :require_login, only: [:new, :create]
 
+    def index
+        @students = Student.gold_stars
+    end
+
     def new
         @student = Student.new
     end
@@ -30,10 +34,6 @@ class StudentsController < ApplicationController
         #validate user first
         #validate update info => current_user.errors
         current_user.update_student(student_params)
-    end
-
-    def stars
-        @students = Student.gold_stars
     end
 
     private

@@ -1,0 +1,6 @@
+<h1>All tutors ranked by rating for your objectification!</h1>
+<ul>
+     <% @tutors.each do |tutor| %>
+        <li><%= link_to "#{tutor.full_name} - #{tutor.rating}", tutor_path(tutor) %></li>
+    <% end %>
+</ul>
