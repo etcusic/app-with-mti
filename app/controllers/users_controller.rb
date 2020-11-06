@@ -17,7 +17,8 @@ class UsersController < ApplicationController
             user_path(@user)
         else
             # add error message?
-            flash[:error] = "You're not Ron."
+            flash[:error] = current_user.no
+            flash[:warning] = current_user.kill
             redirect_to "/" 
         end
     end

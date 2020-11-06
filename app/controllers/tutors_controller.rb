@@ -17,7 +17,8 @@ class TutorsController < ApplicationController
             redirect_to "/users/#{@tutor.id}"
         else
             # error page
-            redirect_to new_tutor_path
+            # binding.pry
+            new_tutor_path
         end
     end
 
@@ -30,11 +31,14 @@ class TutorsController < ApplicationController
     end
 
     def update
-        binding.pry
+        # binding.pry
         #validate user first
         #validate update info => current_user.errors
-        @tutor.update(tutor_params)
-        tutor_path(@tutor)
+        if @tutor.update(tutor_params)
+            tutor_path(@tutor)
+        else 
+            edit_tutor_path(@tutor)
+        end
     end
 
     def destroy

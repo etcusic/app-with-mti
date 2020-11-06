@@ -1,3 +1,8 @@
+<% if @tutor.errors.any? %>
+        <h5 class="error"><%= @tutor.errors.full_messages.to_sentence %></h5>
+<% end %>
+<%# doesn't work yet %>
+
 <%= form_for(@tutor) do |f| %>
 
     <%= f.label :first_name, "First Name" %>

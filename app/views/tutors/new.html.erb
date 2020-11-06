@@ -1,3 +1,6 @@
+<% if @tutor.errors.any? %>
+        <h5 class="error"><%= @tutor.errors.full_messages.to_sentence %></h5>
+<% end %>
 
 <%= form_with model: @tutor do |f| %>
 
