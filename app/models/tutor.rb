@@ -1,7 +1,7 @@
 class Tutor < User
     has_many :appointments
     has_many :students, through: :appointments
-    validates :resume, :zoom_link, presence: true
+    # validates :resume, :zoom_link, presence: true
 
     def self.ranked_tutors
         sorted = Tutor.all.sort_by{|t| t.rating} .reverse
@@ -20,4 +20,11 @@ class Tutor < User
             image: hash[:image]
         )
     end
+
+    def valid_tutor?
+        if self.resume.length > 20 && self.zoom_link.length > 5
+            true
+        end
+    end
+
 end

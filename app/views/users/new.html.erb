@@ -8,7 +8,12 @@
 
 <h1>New User: </h1>
 
+<%#= form_for(@user) do |f| %>
 <%= form_with model: @user, local: true do |f| %>
+
+    <%= f.label :type, "Are you a Student or Tutor?" %>
+    <%= f.select :type, User.types, {include_blank: true} %><br>
+
 
     <%= f.label :first_name, "First Name" %>
     <%= f.text_field :first_name %><br>
@@ -18,22 +23,16 @@
 
     <%= f.label :email, "Email" %>
     <%= f.text_field :email %><br>
-
-    <%= f.label :password, "Password" %>
-    <%= f.text_field :password %><br>
     
     <%= f.label :image, "Image Url:" %>
     <%= f.text_field :image %><br>
     
-    <%= f.label :zoom_link, "Zoom Link" %>
-    <%= f.text_field :zoom_link %><br>
+    <%= f.label :password, "Password" %>
+    <%= f.text_field :password %><br>
 
-    <%= f.label :resume, "Resume:" %><br>
-    <%= f.text_area :resume %><br>
+    <%= f.label :confirm_password, "Confirm Password" %>
+    <%= f.text_field :confirm_password %><br>
 
-    <%= f.label :puppets, "Puppets? [y/n]" %>
-    <%= f.check_box :puppets %><br>
-    
     <%= f.submit "Submit Profile!" %>
 
 <% end %>
