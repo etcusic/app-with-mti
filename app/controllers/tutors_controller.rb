@@ -7,7 +7,7 @@ class TutorsController < ApplicationController
     end
 
     def rated
-        @tutors = Tutor.
+        @tutors = Tutor.ranked_tutors
     end
 
     def new

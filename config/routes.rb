@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   post '/logout' => 'sessions#destroy'
   get '/auth/facebook/callback' => 'sessions#create_with_omniauth'
   get '/tutors/rated' => 'tutors#rated'
+  get '/students/stars' => 'students#stars'
 
   resources :users do
     resources :appointments

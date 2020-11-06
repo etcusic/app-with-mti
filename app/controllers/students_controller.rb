@@ -32,6 +32,10 @@ class StudentsController < ApplicationController
         current_user.update_student(student_params)
     end
 
+    def stars
+        @students = Student.gold_stars
+    end
+
     private
 
     def student

@@ -4,7 +4,7 @@ class Tutor < User
     validates :resume, :zoom_link, presence: true
 
     def self.ranked_tutors
-        sorted = Tutor.all.sort_by{|t| t.rating}.reverse
+        sorted = Tutor.all.sort_by{|t| t.rating} .reverse
     end
 
     def update_tutor(hash)
