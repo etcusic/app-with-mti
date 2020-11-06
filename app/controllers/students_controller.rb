@@ -35,7 +35,7 @@ class StudentsController < ApplicationController
         #validate user first
         #validate update info => current_user.errors
         if @student.update(student_params)
-            student_path(@student)
+            render :show
         else
             render :edit
         end

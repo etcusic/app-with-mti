@@ -8,7 +8,12 @@ class SessionsController < ApplicationController
         @user = User.find_by(email: session_params[:email])
         if @user && @user.authenticate(session_params[:password])
             initialize_session
-            redirect_to user_path(@user)
+            # redirect_to user_path(@user)
+            if @user.is_tutor?
+                redirect_to "/tutors/#{@user.id}"
+            else
+                student_path(@user)
+            end
         else
             # check for errors and redirect to errors page
             flash[:error] = "Invalid email or password. Please try again."
@@ -20,7 +25,12 @@ class SessionsController < ApplicationController
         @user = User.find_by(uid: auth['uid'])
         if @user
             initialize_session
-            redirect_to @user
+            # redirect_to @user
+            if @user.is_tutor?
+                redirect_to "/tutors/#{@user.id}"
+            else
+                student_path(@user)
+            end
         else
             name = auth['info']['name'].split(" ")
             @user = User.create(
@@ -39,7 +49,11 @@ class SessionsController < ApplicationController
                 # new user must choose student or tutor (maybe don't use create until new user finishes editing process)
                 # flash message? => update password
                 initialize_session
-                redirect_to edit_user_path
+                if @user.is_tutor?
+                    redirect_to "/tutors/#{@user.id}"
+                else
+                    student_path(@user)
+                end
             end
         end
         

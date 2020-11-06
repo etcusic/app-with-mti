@@ -1,6 +1,6 @@
 class TutorsController < ApplicationController
     before_action :tutor, only: [:show, :edit, :update, :destroy]
-    skip_before_action :require_login, only: [:new, :create]
+    skip_before_action :require_login, only: [:new, :create, :highest_rated]
 
     def index
         @tutors = Tutor.ranked_tutors
@@ -34,7 +34,7 @@ class TutorsController < ApplicationController
         #validate user first
         #validate update info => current_user.errors
         if @tutor.update(tutor_params)
-            tutor_path(@tutor)
+            render :show
         else 
             render :edit
             # edit_tutor_path(@tutor)
@@ -47,6 +47,11 @@ class TutorsController < ApplicationController
         current_user.appointments.destroy_all
         current_user.destroy
         redirect_to 'sessions#destroy'
+    end
+
+    def highest_rated
+        @tutor = Tutor.order(rating: :desc).first
+        render :show
     end
 
     private
