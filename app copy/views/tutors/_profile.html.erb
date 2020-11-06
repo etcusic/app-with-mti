@@ -1,0 +1,14 @@
+ <%# binding.pry %>
+ <% if @tutor.rating %>
+    <h2>Rating: <%= @tutor.rating%></h2>
+<% end %>
+
+<h2>Resume: <%= @tutor.resume %></h2>
+
+<h2>Appointments:</h2>
+<ul>
+     <% @tutor.appointments_by_date.each do |appt| %>
+        <li><%= "#{appt.student.full_name}: #{appt.time}" %></li>
+    <% end %>
+</ul>
+
