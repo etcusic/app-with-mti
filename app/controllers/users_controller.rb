@@ -14,7 +14,6 @@ class UsersController < ApplicationController
             session[:user_id] = @user.id
             edit_user_path(@user)
         else
-            # error page
             render :new
         end
     end
