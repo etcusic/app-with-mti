@@ -1,4 +1,8 @@
-<h2><%= current_user.about_me %></h2>
+<% if current_user.gold_stars %>
+    <h3>Gold Stars: <%= current_user.gold_stars %></h3>
+<% end %>
+<h3>Level: <%= current_user.level %></h3>
+<h2>About Me: <%= current_user.about_me %></h2>
 
 <h2>Appointments:</h2>
 <ul>
@@ -6,3 +10,5 @@
         <li><%= "#{appt.tutor.full_name}: #{appt.time}" %></li>
     <% end %>
 </ul>
+
+
