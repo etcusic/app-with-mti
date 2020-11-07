@@ -12,4 +12,6 @@ class TutorsController < ApplicationController
         render :show
     end
 
+    # currently looking for update method. Arg
+
 end

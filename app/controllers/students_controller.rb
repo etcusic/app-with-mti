@@ -5,5 +5,7 @@ class StudentsController < ApplicationController
     def index
         @students = Student.gold_stars
     end
+
+    # currently looking for update method. Arg
     
 end

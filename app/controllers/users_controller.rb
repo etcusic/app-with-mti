@@ -31,6 +31,7 @@ class UsersController < ApplicationController
     def edit
     end
 
+    # update currently does not work for user - looking for student and tutor
     def update
         # validate user 
         if @user.update(tutor_params)
