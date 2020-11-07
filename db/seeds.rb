@@ -7,6 +7,21 @@ User.delete_all
 # Student.delete_all
 Appointment.delete_all
 
+MUPPETS = [
+    {first_name: "Big", last_name: "Bird", photo: "/photos/big_bird.jpg"},
+    {first_name: "Fozzy", last_name: "Bear", photo: "/photos/fozzy_bear.jpg"},
+    {first_name: "Gonzo", last_name: "TheGreat", photo: "/photos/gonzo_thegreat.jpg"},
+    {first_name: "Kermit", last_name: "Frog", photo: "/photos/kermit_frog.jpg"},
+    {first_name: "Miss", last_name: "Piggy", photo: "/photos/miss_piggy.jpg"},
+    {first_name: "Dr", last_name: "Beaker", photo: "/photos/dr_beaker.jpg"},
+    {first_name: "Professor", last_name: "Bunsen", photo: "/photos/professor_bunsen.jpg"},
+    {first_name: "Rizzo", last_name: "Rat", photo: "/photos/rizzo_rat.jpg"},
+    {first_name: "Sam", last_name: "Eagle", photo: "/photos/sam_eagle.jpg"},
+    {first_name: "Scoo", last_name: "Ter", photo: "/photos/scoo_ter.jpg"},
+    {first_name: "Swedish", last_name: "Chef", photo: "/photos/swedish_chef.jpg"},
+    {first_name: "Mister", last_name: "Animal", photo: "/photos/the_animal.jpg"}
+]
+
 NAMES = [
     "Dee Zaster",
     "Brandon Irons",
@@ -42,43 +57,45 @@ NAMES = [
     "Jack Hammer"
 ]
 
-5.times do | i |
+12.times do | i |
     name = NAMES[i].split(" ")
     Tutor.create(
         id: i + 1,
-        first_name: name[0],
-        last_name: name[1],
-        email: "#{name[0].downcase}_#{name[1].downcase}@mail",
+        first_name: MUPPETS[i][:first_name],
+        last_name: MUPPETS[i][:last_name],
+        email: "#{MUPPETS[i][:first_name].downcase}_#{MUPPETS[i][:last_name].downcase}@mail",
         password: "password",
-        resume: Faker::Lorem.paragraph(sentence_count: 4),
+        resume: Faker::Lorem.paragraph(sentence_count: 10),
         zoom_link: Faker::Barcode.isbn, 
-        rating: rand(1..10),
-        puppets: Faker::Boolean.boolean
+        rating: rand(1..100),
+        puppets: true,
+        image: MUPPETS[i][:photo]
     )
 end
 
-25.times do | i |
-    name = NAMES[i + 5].split(" ")
+30.times do | i |
+    name = NAMES[i].split(" ")
     Student.create(
-        id: i + 6,
+        id: i + 13,
         first_name: name[0],
         last_name: name[1],
         email: "#{name[0].downcase}_#{name[1].downcase}@mail",
         password: "password",
         about_me: Faker::Movie.quote,
         level: rand(1..100),
-        gold_stars: rand(1..50),
-        helicopter_parent: Faker::Boolean.boolean
+        gold_stars: rand(1..100),
+        helicopter_parent: Faker::Boolean.boolean,
+        image: "/photos/your_photo.jpg"
     )
 end
 
 # binding.pry
 
-50.times do | i |
+100.times do | i |
     Appointment.create(
         id: i + 1,
         date_time: Faker::Time.between_dates(from: Date.today + 10, to: Date.today + 40, period: :day),
-        tutor_id: rand(1..5),
-        student_id: rand(6..30)
+        tutor_id: rand(1..12),
+        student_id: rand(11..40)
     )
 end
