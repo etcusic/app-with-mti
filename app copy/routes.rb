@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'
   post '/logout' => 'sessions#destroy'
+  get '/auth/facebook/callback' => 'sessions#create_with_omniauth'
+  
   get '/tutors/highest_rated' => 'tutors#highest_rated'
   # get '/appointments/soonest_available' => 'appointments#soonest_available
 
@@ -21,7 +23,5 @@ Rails.application.routes.draw do
   end 
 
   resources :appointments # or should I only put appointment resource in nested routes??? 
-
-  get '/auth/facebook/callback' => 'sessions#create_with_omniauth'
 
 end

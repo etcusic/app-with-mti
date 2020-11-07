@@ -10,6 +10,7 @@
   </head>
 
   <body>
+
     <% if flash.any? %>
       <h3>There Be Some Problems, yo!</h3>
       <div>
@@ -33,6 +34,7 @@
     <% if session[:user_id] %>
       <button><%= link_to "Profile", user_path(current_user) %></button>
       <button><%= link_to "Log Out", '/logout', method: 'post' %></button>
+      <button><%= link_to "Edit Profile", edit_user_path(current_user) %></button>
     <% end %>
 
   </body>

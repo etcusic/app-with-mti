@@ -12,7 +12,6 @@ class UsersController < ApplicationController
             flash[:error] = "Invalid password/confirmation. Please try again."
         elsif @user.save   
             session[:user_id] = @user.id
-            # binding.pry
             redirect_to edit_user_path(@user)
         else
             render :new
@@ -20,40 +19,33 @@ class UsersController < ApplicationController
     end
 
     def show
-        # binding.pry
         params.permit(:id)
-        if params[:id].to_i == @user.id
+        if params[:id].to_i == current_user.id
             user_path(@user)
         else
-            # add error message?
-            flash[:error] = current_user.no
-            flash[:warning] = current_user.kill
+            # should show different profile info (no appts)
             redirect_to "/" 
         end
     end
 
     def edit
-        
     end
 
-    # def update
-        #currently being handled in tutors & students => will need to eliminate this route if that stays
-        #validate user 
-        # nest hash - basic user info & tutor/student info??
-
-        # if current_user.is_tutor?
-        #     current_user.update_tutor(tutor_params)
-        # elsif current_user.is_student?
-        #     current_user.update_student(student_params)
-        # end
-    # end
+    def update
+        # validate user 
+        if @user.update(tutor_params)
+            render :show
+        else 
+            render :edit
+        end
+    end
 
     def destroy
         # warning/alert message
-        binding.pry
         current_user.appointments.destroy_all
         current_user.destroy
-        redirect_to 'sessions#destroy'
+        session.delete(:user_id)
+        redirect_to '/'
     end
 
     private
@@ -82,14 +74,6 @@ class UsersController < ApplicationController
             new_student_path
         end
     end
-
-    # def tutor_params
-    #     params.require(:tutor).permit(:resume, :zoom_link, :puppets)
-    # end
-
-    # def student_params
-    #     params.require(:student).permit(:about_me, :level, :helicopter_parent)
-    # end
 
 end
 
