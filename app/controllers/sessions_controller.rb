@@ -60,7 +60,6 @@ class SessionsController < ApplicationController
     end
 
     def destroy
-        binding.pry
         session.delete(:user_id)
         redirect_to '/'
     end

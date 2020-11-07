@@ -35,6 +35,9 @@
       <button><%= link_to "Profile", user_path(current_user) %></button>
       <button><%= link_to "Log Out", '/logout', method: 'post' %></button>
       <button><%= link_to "Edit Profile", edit_user_path(current_user) %></button>
+      <% if current_user.is_student? %>
+        <button><%= link_to "Create Appointment!", "/users/#{current_user.id}/appointments/new", method: 'get' %></button>
+      <% end %>
     <% end %>
 
   </body>
