@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_05_141725) do
+ActiveRecord::Schema.define(version: 2020_11_07_164409) do
 
   create_table "appointments", force: :cascade do |t|
     t.datetime "date_time"
@@ -43,7 +43,7 @@ ActiveRecord::Schema.define(version: 2020_11_05_141725) do
     t.boolean "helicopter_parent"
     t.string "type"
     t.string "uid"
-    t.string "image"
+    t.string "image", default: "/photos/your_photo.jpeg"
   end
 
 end

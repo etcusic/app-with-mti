@@ -84,8 +84,7 @@ end
         about_me: Faker::Movie.quote,
         level: rand(1..100),
         gold_stars: rand(1..100),
-        helicopter_parent: Faker::Boolean.boolean,
-        image: "/photos/your_photo.jpg"
+        helicopter_parent: Faker::Boolean.boolean
     )
 end
 
