@@ -8,12 +8,7 @@ class SessionsController < ApplicationController
         @user = User.find_by(email: session_params[:email])
         if @user && @user.authenticate(session_params[:password])
             initialize_session
-            # redirect_to user_path(@user)
-            if @user.is_tutor?
-                redirect_to "/tutors/#{@user.id}"
-            else
-                redirect_to "/students/#{@user.id}"
-            end
+            redirect_to user_path(@user)
         else
             # check for errors and redirect to errors page
             flash[:error] = "Invalid email or password. Please try again."

@@ -1,7 +1,10 @@
-<h1>All tutors ranked by rating for your objectification!</h1>
+<h1>All Tutors (listed in order of rating)</h1>
 <ul>
      <% @tutors.each do |tutor| %>
-        <li><%= link_to "#{tutor.full_name} - #{tutor.rating}", tutor_path(tutor) %></li>
+        <li>
+            <%= link_to "#{tutor.full_name} - #{tutor.rating}", user_path(tutor) %><br>
+            <img src=<%= tutor.image %>, alt="tutor photo here">
+        </li>
     <% end %>
 </ul>
 

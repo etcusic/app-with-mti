@@ -1,10 +1,14 @@
+<% if users_stuff? %>
+
+
+
 <% if current_user.rating %>
     <h3>Rating: <%= current_user.rating %></h3>
 <% end %>
 
 <h2>Resume: <%= current_user.resume %></h2>
 
-<h2>Appointments:</h2>
+<h2>Your Appointments:</h2>
 <ul>
      <% current_user.appointments_by_date.each do |appt| %>
         <li><%= "#{appt.student.full_name}: #{appt.time}" %></li>

@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   get '/auth/facebook/callback' => 'sessions#create_with_omniauth'
 
   get '/tutors/highest_rated' => 'tutors#highest_rated'
+  get '/tutors' => 'tutors#index'
   # get '/appointments/soonest_available' => 'appointments#soonest_available
 
   resources :users do

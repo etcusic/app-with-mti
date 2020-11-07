@@ -19,6 +19,7 @@
             <li><%= "#{type}: #{msg}" %></li>
           <% end %>
         </ul>
+        <img src='/photos/sad_panda.gif'>
       </div>
       <h4>Click "Home Page" or refresh the page to move on.</h4>
     <% else %>
@@ -31,7 +32,9 @@
     <button><%= link_to "New User", new_user_path %></button>    
     <button><%= link_to "Home Page", '/' %></button>
     <button><%= link_to "Log In", '/login' %></button>
-    <% if session[:user_id] %>
+    <button><%= link_to "All Tutors", tutors_path %></button>
+
+    <% if current_user && session[:user_id] == current_user.id %>
       <button><%= link_to "Profile", user_path(current_user) %></button>
       <button><%= link_to "Log Out", '/logout', method: 'post' %></button>
       <button><%= link_to "Edit Profile", edit_user_path(current_user) %></button>
