@@ -2,9 +2,9 @@
 # rails g model Student first_name:string last_name:string email:string password_digest:string about_me:text level:integer gold_stars:integer helicopter_parent:boolean --no-test-framework
 # rails g model Appointment date_time:datetime tutor:belongs_to student:belongs_to --no-test-framework
 
+# need to find better photos for: big bird, and miss piggy (maybe kermit and fozzy as well)
+
 User.delete_all
-# Tutor.delete_all
-# Student.delete_all
 Appointment.delete_all
 
 MUPPETS = [

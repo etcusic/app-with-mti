@@ -3,7 +3,7 @@
      <% @tutors.each do |tutor| %>
         <li>
             <%= link_to "#{tutor.full_name} - #{tutor.rating}", user_path(tutor) %><br>
-            <img src=<%= tutor.image %>, alt="tutor photo here">
+            <img src="<%= tutor.image %>", alt="tutor photo here">
         </li>
     <% end %>
 </ul>
