@@ -4,23 +4,16 @@
     <%= render partial: 'tutors/profile' %>
 <% elsif users_stuff? && is_student? %>
     <%= render partial: 'students/profile' %>
+<% elsif !users_stuff? && public_profile.is_tutor? %>
+    <%= render partial: 'tutors/public' %>
+<% elsif !users_stuff? && public_profile.is_student? %>
+    <%= render partial: 'students/public' %>
+<% else %>
+    <h1>ERROR!!!</h1>
 <% end %>
 <%#binding.pry%>
 
 
-
-
-
-<img src="<%= current_user.image %>", alt="profile pic goes here">
-
-<h1>Welcome <%= "#{current_user.first_name} #{current_user.last_name}!" %></h1>
-
-<% if current_user.is_tutor? %>
-    <h2>Tutor Profile</h2>
-<% elsif current_user.is_student? %>
-    <h2>Student Profile</h2>
-    <%= render partial: 'students/profile' %>
-<% end %>
 
 
 
