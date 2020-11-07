@@ -24,4 +24,8 @@ module ApplicationHelper
         "#{msg[0].to_s.capitalize}: #{msg[1][0]}"
     end
 
+    def permitted_params
+        params.permit
+    end
+
 end

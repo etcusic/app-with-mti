@@ -3,7 +3,7 @@
 
     <h2>Level: <%= @public_user.level %></h2></h2>
 
-    <% if current_user.rating %>
+    <% if @public_user.rating %>
         <h2>Gold Stars: <%= @public_user.gold_stars %></h2>
     <% end %>
 

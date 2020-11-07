@@ -12,21 +12,16 @@
   <body>
 
     <% if flash.any? %>
-      <h3>There Be Some Problems, yo!</h3>
-      <div>
-        <ul>
-          <% flash.each do |type, msg| %>
-            <li><%= "#{type}: #{msg}" %></li>
-          <% end %>
-        </ul>
-        <img src='/photos/sad_panda.gif'>
-      </div>
-      <h4>Click "Home Page" or refresh the page to move on.</h4>
+      <%= render partial: 'partials/flash'%>
     <% else %>
       <%= yield %>
     <% end %>
 
     <%# PUT LINKS AND LOGIC INTO A PARTIAL %>
+    <%#binding.pry%>
+    <%= render partial: 'partials/buttons'%><br><br><br>
+    
+    
     
     Practice:
     <button><%= link_to "New User", new_user_path %></button>    
