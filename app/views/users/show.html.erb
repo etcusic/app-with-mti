@@ -1,4 +1,15 @@
-<%# if users_stuff? %>
+<img class='profile-photo' src="<%= public_profile.image %>", alt="profile pic goes here">
+
+<% if users_stuff? && is_tutor? %>
+    <%= render partial: 'tutors/profile' %>
+<% elsif users_stuff? && is_student? %>
+    <%= render partial: 'students/profile' %>
+<% end %>
+<%#binding.pry%>
+
+
+
+
 
 <img src="<%= current_user.image %>", alt="profile pic goes here">
 
@@ -6,7 +17,6 @@
 
 <% if current_user.is_tutor? %>
     <h2>Tutor Profile</h2>
-    <%= render partial: 'tutors/profile' %>
 <% elsif current_user.is_student? %>
     <h2>Student Profile</h2>
     <%= render partial: 'students/profile' %>

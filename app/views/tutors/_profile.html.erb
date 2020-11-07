@@ -1,17 +1,16 @@
-<% if users_stuff? %>
+<h1>Welcome <%= "#{current_user.first_name} #{current_user.last_name}!" %></h1>
 
-
-
-<% if current_user.rating %>
-    <h3>Rating: <%= current_user.rating %></h3>
-<% end %>
-
-<h2>Resume: <%= current_user.resume %></h2>
-
-<h2>Your Appointments:</h2>
-<ul>
-     <% current_user.appointments_by_date.each do |appt| %>
-        <li><%= "#{appt.student.full_name}: #{appt.time}" %></li>
+<div class='users-profile'>
+    <% if current_user.rating %>
+        <h3>Your Current Rating: <%= current_user.rating %></h3>
     <% end %>
-</ul>
+
+    <h2>Your Appointments:</h2>
+    <ul>
+        <% current_user.appointments_by_date.each do |appt| %>
+            <li><%= "#{appt.student.full_name}: #{appt.time}" %></li>
+        <% end %>
+    </ul>
+</div>
+
 
