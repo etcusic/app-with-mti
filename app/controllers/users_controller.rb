@@ -19,13 +19,6 @@ class UsersController < ApplicationController
     end
 
     def show
-        # params.permit(:id)
-        # if logged_in? && current_user
-        #     user_path(@user)
-        # else
-        #     # should show different profile info (no appts)
-        #     redirect_to "/" 
-        # end
     end
 
     def edit

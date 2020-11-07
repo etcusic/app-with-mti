@@ -6,23 +6,22 @@
     </ul>
 <% end %>
 
-<% if session[:user_id] %>
+   
+    
+    
+    Practice:
+    <button><%= link_to "New User", new_user_path %></button>    
+    <button><%= link_to "Home Page", '/' %></button>
+    <button><%= link_to "Log In", '/login' %></button>
+    <button><%= link_to "All Tutors", tutors_path %></button>
+
+    <% if current_user && session[:user_id] == current_user.id %>
       <button><%= link_to "Profile", user_path(current_user) %></button>
       <button><%= link_to "Log Out", '/logout', method: 'post' %></button>
-      <button><%= link_to "Edit Student", "/students/#{current_user.id}/edit" %></button>
-      <button><%= link_to "Edit Tutor", "/tutors/#{current_user.id}/edit" %></button>
-      <% if User.find_by_id(session[:user_id]).is_student? %>
+      <button><%= link_to "Edit Profile", edit_user_path(current_user) %></button>
+      <% if current_user.is_student? %>
         <button><%= link_to "Create Appointment!", "/users/#{current_user.id}/appointments/new", method: 'get' %></button>
-        <% end %>
-    <% else %>
-      <button><%= link_to "Become a Tutor!", new_tutor_path %></button>
-      <button><%= link_to "Enroll as a Student!", new_student_path %></button>
-      <button><%= link_to "Log In", '/login' %></button>
-      <button><%= link_to('Log in with Facebook', '/auth/facebook') %></button>
+      <% end %>
     <% end %>
-    
-    <button><%= link_to "Home Page", '/' %></button>
-    <button><%= link_to "All Tutors!", '/tutors' %></button>
-    <button><%= link_to "All Students!", '/students' %></button>
-    <button><%= link_to "Highest Rated Tutor!", '/tutors/highest_rated' %></button><br><br><br>
+
 
