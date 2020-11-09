@@ -9,7 +9,7 @@ Appointment.delete_all
 
 MUPPETS = [
     {first_name: "Big", last_name: "Bird", photo: "/photos/big_bird.jpg"},
-    {first_name: "Fozzy", last_name: "Bear", photo: "/photos/fozzy_bear.jpg"},
+    {first_name: "Fozzy", last_name: "Bear", photo: "/photos/fozzy_bear.webp"},
     {first_name: "Gonzo", last_name: "TheGreat", photo: "/photos/gonzo_thegreat.jpg"},
     {first_name: "Kermit", last_name: "Frog", photo: "/photos/kermit_frog.jpg"},
     {first_name: "Miss", last_name: "Piggy", photo: "/photos/miss_piggy.jpg"},

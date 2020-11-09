@@ -9,7 +9,7 @@ Rails.application.routes.draw do
 
   get '/tutors/highest_rated' => 'tutors#highest_rated'
   get '/tutors' => 'tutors#index'
-  # get '/appointments/soonest_available' => 'appointments#soonest_available
+  # get '/appointments/soonest_available' => 'appointments#soonest_available - if tutors can set up availability
 
   resources :users do
     resources :appointments
