@@ -6,6 +6,7 @@
     </ul>
 <% end %>
 
+
 <% if @user.is_tutor? %>
      <%= render partial: 'tutors/edit' %>
 <% elsif @user.is_student? %>

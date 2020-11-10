@@ -10,11 +10,10 @@ class TutorsController < ApplicationController
     def highest_rated
         # is there a better way to scope this route?
         @tutor = Tutor.order(rating: :desc).first
-        render :show
+        redirect_to "/users/#{@tutor.id}"
     end
 
     def update
-        # binding.pry
         # validate user?
         if @user.update(tutor_params) 
             redirect_to "users#show" 

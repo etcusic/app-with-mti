@@ -6,9 +6,7 @@ class StudentsController < ApplicationController
         @students = Student.gold_stars
     end
 
-    # currently looking for update method. Arg
     def update
-        # binding.pry
         # validate user ?
         if @user.update(student_params)
             redirect_to "/users/#{@user.id}" 
