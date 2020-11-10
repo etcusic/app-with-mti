@@ -6,7 +6,7 @@
 
   <% if !logged_in? %>
     <%# buttons if not logged in %>
-    <button><%= link_to "Join Us!", new_user_path %></button>    
+    <button><%= link_to "Create Profile!", new_user_path %></button>    
     <button><%= link_to "Log In", '/login' %></button>
     <button><%= link_to 'Log in with Facebook', '/auth/facebook' %></button>
     <button><%= link_to "Meet the Tutors", tutors_path %></button>

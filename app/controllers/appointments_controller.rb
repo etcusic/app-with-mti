@@ -7,13 +7,15 @@ class AppointmentsController < ApplicationController
 
     def new
         # Only students can view this page!
-        @appt = Appointment.new
+        @appt = current_user.appointments.build  #Appointment.new
     end
 
     def create  
-        @appt = Appointment.new_with_params(appt_params)
+        # binding.pry
+        @appt = Appointment.new_with_params(new_appt_params)
         if @appt.save
-           redirect_to student_path(current_user)
+            # binding.pry
+            redirect_to user_path(current_user)
         else
             # error => means they did not select a tutor
             render :new
@@ -40,6 +42,18 @@ class AppointmentsController < ApplicationController
 
     def appt_params
         params.require(:appointment).permit(:date_time, :tutor_id, :student_id)
+    end
+
+    def new_appt_params
+        params.permit(
+            "student_id",
+            "tutor_id",
+            "date_time(1i)",
+            "date_time(2i)",
+            "date_time(3i)",
+            "date_time(4i)",
+            "date_time(5i)"
+        )
     end
 
     def appt
