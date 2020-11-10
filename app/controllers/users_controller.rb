@@ -8,7 +8,6 @@ class UsersController < ApplicationController
 
     def create
         @user = User.new(user_params)
-        binding.pry
         if !confirm_password
             flash[:error] = "Invalid password/confirmation. Please try again."
         elsif @user.save   
@@ -27,6 +26,7 @@ class UsersController < ApplicationController
 
     # update currently does not work for user - looking for student and tutor
     def update
+        binding.pry
         # validate user 
         if @user.update(tutor_params)
             render :show

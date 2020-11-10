@@ -1,5 +1,4 @@
 class StudentsController < ApplicationController
-    before_action :student, only: [:show, :edit, :update, :destroy]
     # skip_before_action :require_login, only: [:new, :create]
 
     def index
@@ -7,5 +6,17 @@ class StudentsController < ApplicationController
     end
 
     # currently looking for update method. Arg
+    def update
+        binding.pry
+    end
+
+    private
+
+    def student_params
+        params.require('student').permit(
+            :id, :type, :email, :first_name, :last_name, :password, :image, 
+            :about_me, :level, :helicopter_parent, :gold_stars
+        )
+    end
     
 end
