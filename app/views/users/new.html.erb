@@ -7,13 +7,10 @@
 <% end %>
 
 <h1>New User: </h1>
-
-<%#= form_for(@user) do |f| %>
 <%= form_with model: @user, local: true do |f| %>
 
     <%= f.label :type, "Are you a Student or Tutor?" %>
     <%= f.select :type, User.types, {include_blank: true} %><br>
-
 
     <%= f.label :first_name, "First Name" %>
     <%= f.text_field :first_name %><br>

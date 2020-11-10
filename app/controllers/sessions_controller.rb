@@ -17,11 +17,11 @@ class SessionsController < ApplicationController
     end
 
     def create_with_omniauth
+        @user = User.find_by(email: auth['info']['email'])
         # binding.pry
-        @user = User.find_by(email: auth['email'])
         if @user
             initialize_session
-            redirect_to @user
+            redirect_to "/users/#{@user.id}"
         else
             name = auth['info']['name'].split(" ")
             @user = User.new(
@@ -32,20 +32,6 @@ class SessionsController < ApplicationController
                 image: auth['info']['image']                
             )
             render :new_with_omniauth
-            # if @user.errors.any?
-            #     #create errors page
-            #     #refactor this into a helper method?
-            #     redirect_to '/'
-            # else
-            #     # new user must choose student or tutor (maybe don't use create until new user finishes editing process)
-            #     # flash message? => update password
-            #     initialize_session
-            #     if @user.is_tutor?
-            #         redirect_to "/tutors/#{@user.id}"
-            #     else
-            #         student_path(@user)
-            #     end
-            # end
         end
         
     end

@@ -8,6 +8,7 @@ class UsersController < ApplicationController
 
     def create
         @user = User.new(user_params)
+        binding.pry
         if !confirm_password
             flash[:error] = "Invalid password/confirmation. Please try again."
         elsif @user.save   
