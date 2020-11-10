@@ -6,6 +6,11 @@ class ApplicationController < ActionController::Base
     def home
     end
 
+    def user
+        @user = User.find_by_id(session[:user_id])
+    end
+
+
     # what is the best way to work in #current_user 
     # right now it is in ApplicationHelper module, and that module is included in ApplicationController, which all other controllers inherit from
 

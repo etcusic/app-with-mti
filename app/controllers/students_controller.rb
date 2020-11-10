@@ -1,4 +1,5 @@
 class StudentsController < ApplicationController
+    before_action :user, only: [:update]
     # skip_before_action :require_login, only: [:new, :create]
 
     def index
@@ -7,7 +8,13 @@ class StudentsController < ApplicationController
 
     # currently looking for update method. Arg
     def update
-        binding.pry
+        # binding.pry
+        # validate user ?
+        if @user.update(student_params)
+            redirect_to "/users/#{@user.id}" 
+        else 
+            render :edit
+        end
     end
 
     private

@@ -27,12 +27,6 @@ class UsersController < ApplicationController
     # update currently does not work for user - looking for student and tutor
     def update
         binding.pry
-        # validate user 
-        if @user.update(tutor_params)
-            render :show
-        else 
-            render :edit
-        end
     end
 
     def destroy
@@ -45,9 +39,9 @@ class UsersController < ApplicationController
 
     private
 
-    def user
-        @user = User.find_by_id(session[:user_id])
-    end
+    # def user
+    #     @user = User.find_by_id(session[:user_id])
+    # end
 
     def user_params
         params.require(:user).permit(
