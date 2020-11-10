@@ -31,17 +31,12 @@ class UsersController < ApplicationController
 
     def destroy
         # warning/alert message
-        current_user.appointments.destroy_all
         current_user.destroy
         session.delete(:user_id)
         redirect_to '/'
     end
 
     private
-
-    # def user
-    #     @user = User.find_by_id(session[:user_id])
-    # end
 
     def user_params
         params.require(:user).permit(

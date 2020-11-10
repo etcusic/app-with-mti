@@ -1,5 +1,5 @@
 class Student < User
-    has_many :appointments
+    has_many :appointments, dependent: :destroy
     has_many :tutors, through: :appointments
     # validates :about_me, :level, presence: true
 

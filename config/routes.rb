@@ -8,7 +8,6 @@ Rails.application.routes.draw do
   get '/auth/facebook/callback' => 'sessions#create_with_omniauth'
   get '/tutors/highest_rated' => 'tutors#highest_rated'
 
-  # get '/tutors' => 'tutors#index'
   # get '/appointments/soonest_available' => 'appointments#soonest_available - if tutors can set up availability
 
   resources :users do
@@ -18,15 +17,4 @@ Rails.application.routes.draw do
   resources :students, only: [:update]
   resources :tutors, only: [:index, :update]
 
-  # resources :tutors do
-  #   resources :appointments
-  # end 
-
-  # resources :students do
-  #   resources :appointments
-  # end 
-
-  # resources :appointments # or should I only put appointment resource in nested routes??? 
-
-  # root 'application#home'
 end

@@ -1,5 +1,5 @@
 class Tutor < User
-    has_many :appointments
+    has_many :appointments, dependent: :destroy
     has_many :students, through: :appointments
     # validates :resume, :zoom_link, presence: true
 
