@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_07_164409) do
+ActiveRecord::Schema.define(version: 2020_11_11_143533) do
 
   create_table "appointments", force: :cascade do |t|
     t.datetime "date_time"
@@ -44,6 +44,7 @@ ActiveRecord::Schema.define(version: 2020_11_07_164409) do
     t.string "type"
     t.string "uid"
     t.string "image", default: "/photos/your_photo.jpeg"
+    t.string "category"
   end
 
 end

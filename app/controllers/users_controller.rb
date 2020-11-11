@@ -8,10 +8,9 @@ class UsersController < ApplicationController
 
     def create
         @user = User.new(user_params)
-        if !confirm_password
-            flash[:error] = "Invalid password/confirmation. Please try again."
-        elsif @user.save   
+        if @user.save   
             session[:user_id] = @user.id
+            @user.update(type: user_params[:category])
             redirect_to edit_user_path(@user)
         else
             render :new
@@ -22,11 +21,6 @@ class UsersController < ApplicationController
     end
 
     def edit
-    end
-
-    # update currently does not work for user - looking for student and tutor
-    def update
-        binding.pry
     end
 
     def destroy
@@ -40,15 +34,10 @@ class UsersController < ApplicationController
 
     def user_params
         params.require(:user).permit(
-            :id, :type, :image, :email, :first_name, :last_name, :password, :password_confirmation,
+            :id, :category, :type, :image, :email, :first_name, :last_name, :password, :password_confirmation,
             :resume, :zoom_link, :puppets, :rating,
             :about_me, :level, :helicopter_parent, :gold_stars
         )
-    end
-
-    def confirm_password
-        params.require(:user).permit(:password, :password_confirmation)
-        params[:password] == params[:password_confirmation]
     end
 
     def redirect_according_to_type

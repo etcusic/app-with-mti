@@ -14,7 +14,7 @@ Rails.application.routes.draw do
     resources :appointments
   end 
 
-  resources :students, only: [:update]
-  resources :tutors, only: [:index, :update]
+  resources :students, only: [:create, :update]
+  resources :tutors, only: [:index, :create, :update]
 
 end
