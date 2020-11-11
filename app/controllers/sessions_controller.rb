@@ -18,7 +18,6 @@ class SessionsController < ApplicationController
 
     def create_with_omniauth
         @user = User.find_by(email: auth['info']['email'])
-        # binding.pry
         if @user
             initialize_session
             redirect_to "/users/#{@user.id}"
