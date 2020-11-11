@@ -40,15 +40,15 @@ class UsersController < ApplicationController
 
     def user_params
         params.require(:user).permit(
-            :id, :type, :email, :first_name, :last_name, :password, :image, 
+            :id, :type, :image, :email, :first_name, :last_name, :password, :password_confirmation,
             :resume, :zoom_link, :puppets, :rating,
             :about_me, :level, :helicopter_parent, :gold_stars
         )
     end
 
     def confirm_password
-        params.require(:user).permit(:password, :confirm_password)
-        params[:password] == params[:confirm_password]
+        params.require(:user).permit(:password, :password_confirmation)
+        params[:password] == params[:password_confirmation]
     end
 
     def redirect_according_to_type
