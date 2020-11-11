@@ -12,9 +12,9 @@ Rails.application.routes.draw do
 
   resources :users do
     resources :appointments
-  end 
+  end
 
-  resources :students, only: [:create, :update]
-  resources :tutors, only: [:index, :create, :update]
+  resources :students, only: [:index, :update]
+  resources :tutors, only: [:index, :update]
 
 end

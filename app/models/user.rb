@@ -23,13 +23,5 @@ class User < ApplicationRecord
     def appointments_by_date
         self.appointments.sort_by{|appt| appt.date_time}
     end
-
-    def no
-        "You're not Ron."    
-    end
-
-    def kill
-        "I might actually kill you."
-    end
     
 end

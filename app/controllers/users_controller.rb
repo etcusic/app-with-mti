@@ -40,14 +40,6 @@ class UsersController < ApplicationController
         )
     end
 
-    def redirect_according_to_type
-        if @user.type == Tutor
-            new_tutor_path
-        elsif @user.type == Student
-            new_student_path
-        end
-    end
-
 end
 
 # UsersController to do list:
