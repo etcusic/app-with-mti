@@ -1,0 +1,19 @@
+<img class='profile-photo' src="<%= public_profile.image %>", alt="profile pic goes here">
+
+<% if users_stuff? && is_tutor? %>
+    <%= render partial: 'tutors/profile' %>
+<% elsif users_stuff? && is_student? %>
+    <%= render partial: 'students/profile' %>
+<% elsif !users_stuff? && public_profile.is_tutor? %>
+    <%= render partial: 'tutors/public' %>
+<% elsif !users_stuff? && public_profile.is_student? %>
+    <%= render partial: 'students/public' %>
+<% else %>
+    <h1>ERROR!!!</h1>
+<% end %>
+<%#binding.pry%>
+
+
+
+
+

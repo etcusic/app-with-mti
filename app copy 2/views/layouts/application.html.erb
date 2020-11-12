@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>AppWithMti</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+
+    <% if flash.any? %>
+      <%= render partial: 'partials/flash'%>
+    <% else %>
+      <%= yield %>
+    <% end %>
+
+    <footer>
+      <%= render partial: 'partials/footer'%><br><br><br>
+    </footer>
+ 
+  </body>
+</html>

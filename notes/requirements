@@ -1,7 +1,5 @@
 # Specifications for the Rails Assessment
 
-*** Create new appointment form
-*** Nested resources => /tutors/2/appointments/5
 *** Class level scope method => /tutors/highest_rating (???)
 
 Specs:

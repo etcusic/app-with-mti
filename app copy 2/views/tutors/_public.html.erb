@@ -1,0 +1,11 @@
+
+<div class='public-profile'>
+    <h1><%= @public_user.full_name %></h1>
+
+    <% if @public_user.rating %>
+        <h2>Current Rating: <%= @public_user.rating %></h2>
+    <% end %>
+
+    <h2>Resume: <%= @public_user.resume %></h2>
+
+</div>

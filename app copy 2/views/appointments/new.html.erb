@@ -1,0 +1,23 @@
+<h1>Make an Appointment!</h1>
+
+<% if @appt.errors.any? %>
+    <ul>
+        <% @appt.errors.messages.each do |msg| %>
+            <li><%= display_errors(msg) %></li>
+        <% end %>
+    </ul>
+<% end %>
+
+<%#= form_with model: @appts, local: true do |f| %>
+<%= form_with(url: "/users/#{current_user.id}/appointments", method: "post") do |f| %>
+
+    <%= f.label :tutor_id, "Pick Tutor: " %>
+    <%= f.collection_select(:tutor_id, Tutor.all, :id, :full_name, {include_blank: true}) %><br>
+
+    <%= f.label :date_time, "Date & Time: " %>
+    <%= f.datetime_select(:date_time, default: 1.days.from_now, order: [:month, :day, :year], start_year: 2020, end_year: 2021) %><br>
+
+    <%= f.hidden_field :student_id, value: current_user.id %>
+    <%= f.submit "Create Appointment" %>
+
+<% end %>

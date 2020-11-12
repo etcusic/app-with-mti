@@ -1,0 +1,35 @@
+<div class='centered'>
+
+  <% if params[:action] != "home" %>
+    <button><%= link_to "Home Page", '/' %></button>
+  <% end %>
+
+  <% if !logged_in? %>
+    <%# buttons if not logged in %>
+    <button><%= link_to "Create Profile!", new_user_path %></button>    
+    <button><%= link_to "Log In", '/login' %></button>
+    <button><%= link_to 'Log in with Facebook', '/auth/facebook' %></button>
+    <button><%= link_to "Meet the Tutors", tutors_path %></button>
+  
+  <% else %>
+    
+    <% if users_stuff? && is_student? %>
+
+        <button><%= link_to "Create Appointment!", "/users/#{current_user.id}/appointments/new", method: 'get' %></button>
+        <button><%= link_to "All Tutors", tutors_path %></button>
+        <button><%= link_to "Highest Rated Tutor!", '/tutors/highest_rated' %></button><br><br><br>
+
+    <% else %>
+    <%# what buttons show up on every other page %>
+
+      <button><%= link_to "Profile", user_path(current_user) %></button>
+      <button><%= link_to "Create Appointment!", "/users/#{current_user.id}/appointments/new", method: 'get' %></button>
+      <button><%= link_to "Edit Profile", edit_user_path(current_user) %></button>
+      <button><%= link_to "Log Out", '/logout', method: 'post' %></button>
+
+    <%# still need to account for edit page, new appointment page %>
+
+    <% end %>
+  <% end %>
+ 
+</div>
