@@ -1,10 +1,10 @@
 class AppointmentsController < ApplicationController
-    before_action :appt, only: [:show, :edit, :update, :destroy]
+    before_action :appt, only: [:edit, :update, :destroy]
     skip_before_action :validate_user
     before_action :validate_user_appts
 
     def index
-        # for once I incorporate admin
+        # for when I incorporate admin
         @appts = Appointment.all
     end
 
@@ -17,13 +17,10 @@ class AppointmentsController < ApplicationController
     end
 
     def create  
-        # binding.pry
         @appt = Appointment.new_with_params(new_appt_params)
         if @appt.save
-            # binding.pry
-            redirect_to user_path(current_user)
+            redirect_to "/users/#{current_user.id}"
         else
-            # error => means they did not select a tutor
             render :new
         end
     end
