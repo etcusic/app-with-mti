@@ -11,16 +11,18 @@ class UsersController < ApplicationController
         if @user.save   
             session[:user_id] = @user.id
             @user.update(type: user_params[:category])
-            redirect_to edit_user_path(@user)
+            @user.type == Student ? edit_student_path(@user) : edit_tutor_path(@user) 
         else
             render :new
         end
     end
 
     def show
+        @user.is_student? ? student_path(@user) : tutor_path(@user)
     end
 
     def edit
+        @user.is_student? ? edit_student_path(@user) : edit_tutor_path(@user)
     end
 
     def destroy
@@ -35,8 +37,8 @@ class UsersController < ApplicationController
     def user_params
         params.require(:user).permit(
             :id, :category, :type, :image, :email, :first_name, :last_name, :password, :password_confirmation,
-            :resume, :zoom_link, :puppets,
-            :about_me, :level, :helicopter_parent
+            :resume, :zoom_link, :puppets, :rating,
+            :about_me, :level, :helicopter_parent, :gold_stars
         )
     end
 

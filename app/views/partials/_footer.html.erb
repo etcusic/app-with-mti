@@ -2,10 +2,9 @@
 
   <% if !logged_in? %>
    
-    <button><%= link_to "Log In", '/login' %></button>
-    <button><%= link_to "Create Profile!", new_user_path %></button> 
-    <button><%= link_to 'Log in with Facebook', '/auth/facebook' %></button>
-    
+    <button><%= link_to_login %></button>
+    <button><%= link_to_new_profile %></button> 
+    <button><%= link_to_omni %></button>
     <% if !tutors_index? %>
       <button><%= link_to_all_tutors %></button>
     <% end %>
@@ -13,31 +12,31 @@
   <% else %>
 
     <% if !user_profile? %>
-      <button><%= link_to "Profile", user_path(current_user) %></button>
+      <button><%= link_to_profile %></button>
     <% end %>
 
     <% if current_user.is_student? && !new_appt? %>
-      <button><%= link_to "Create Appointment!", "/users/#{current_user.id}/appointments/new", method: 'get' %></button>
+      <button><%= link_to_new_appt %></button>
     <% end %>
 
     <% if current_user.is_student? && !highest_tutor? %>
-      <button><%= link_to "Highest Rated Tutor!", '/tutors/highest_rated' %></button>
+      <button><%= link_to_highest_tutor %></button>
     <% end %>
 
     <% if current_user.is_student? && !tutors_index? %>
-      <button><%= link_to "Meet the Tutors", tutors_path %></button>
+      <button><%= link_to_all_tutors %></button>
     <% end %>
 
     <% if !edit_profile? %>
-        <button><%= link_to "Edit Profile", edit_user_path(current_user) %></button>
+        <button><%= link_to_edit_profile %></button>
     <% end %>
 
-    <button><%= link_to "Log Out", '/logout', method: 'post' %></button>
+    <button><%= link_to_logout %></button>
 
   <% end %>
 
   <% if params[:action] != "home" %>
-    <button><%= link_to "Home Page", '/' %></button>
+    <button><%= link_to_home %></button>
   <% end %>
   
 </div>

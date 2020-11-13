@@ -1,7 +1,7 @@
 class Tutor < User
     has_many :appointments, dependent: :destroy
     has_many :students, through: :appointments
-    validates :resume, :zoom_link, presence: true
+    # validates :resume, :zoom_link, presence: true
 
     def self.ranked_tutors
         sorted = Tutor.all.sort_by{|t| t.rating} .reverse

@@ -1,38 +1,9 @@
 class TutorsController < ApplicationController
-    before_action :tutor, only: [:show, :edit, :update, :destroy]
-    skip_before_action :require_login, only: [:new, :create, :highest_rated]
+    before_action :user, only: [:update]
+    skip_before_action :require_login, only: [:highest_rated]
 
     def index
         @tutors = Tutor.ranked_tutors
-    end
-
-    def new
-        @tutor = Tutor.new
-    end
-
-    def create
-        @tutor = Tutor.new(tutor_params)
-        if @tutor.save   
-            session[:user_id] = @tutor.id
-            redirect_to tutor_path(@tutor)
-        else
-            render :new
-        end
-    end
-
-    def show
-    end
-
-    def edit
-    end
-
-    def update
-        # validate user?
-        if @tutor.update(tutor_params) 
-            redirect_to "tutors#show" 
-        else 
-            render :edit
-        end
     end
 
     def highest_rated
@@ -41,16 +12,21 @@ class TutorsController < ApplicationController
         redirect_to "/users/#{@tutor.id}"
     end
 
-    private 
-
-    def tutor
-        @tutor = Tutor.find_by_id(session[:user_id])
+    def update
+        # validate user?
+        if @user.update(tutor_params) 
+            redirect_to "users#show" 
+        else 
+            render :edit
+        end
     end
+
+    private 
 
     def tutor_params
         params.require('tutor').permit(
             :id, :image, :email, :first_name, :last_name, :password, :password_confirmation,
-            :resume, :zoom_link, :puppets, :rating
+            :resume, :zoom_link, :puppets
         )
     end
 

@@ -1,7 +1,7 @@
 class Student < User
     has_many :appointments, dependent: :destroy
     has_many :tutors, through: :appointments
-    # validates :about_me, :level, presence: true
+    validates :about_me, :level, presence: true
 
     def self.gold_stars
         Student.all.sort_by{|stu| stu.gold_stars } .reverse

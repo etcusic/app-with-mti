@@ -1,21 +1,14 @@
 class StudentsController < ApplicationController
-    before_action :user, only: [:show, :edit, :update, :destroy]
-    skip_before_action :require_login, only: [:new, :create]
+    before_action :user, only: [:update]
 
     def index
         @students = Student.gold_stars
     end
 
-    def show
-    end
-
-    def edit
-    end
-
     def update
         # validate user ?
-        if @student.update(student_params)
-            redirect_to "/students/#{@user.id}" 
+        if @user.update(student_params)
+            redirect_to "/users/#{@user.id}" 
         else 
             render :edit
         end
@@ -23,14 +16,10 @@ class StudentsController < ApplicationController
 
     private
 
-    def student
-        @student = User.find_by_id(session[:user_id])
-    end
-
     def student_params
         params.require('student').permit(
             :id, :image, :email, :first_name, :last_name, :password, :password_confirmation, 
-            :about_me, :level, :helicopter_parent, :gold_stars
+            :about_me, :level, :helicopter_parent
         )
     end
     
