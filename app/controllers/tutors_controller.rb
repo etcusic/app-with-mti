@@ -11,7 +11,7 @@ class TutorsController < ApplicationController
     end
 
     def create
-        @tutor = Tutor.new(user_params)
+        @tutor = Tutor.new(tutor_params)
         if @tutor.save   
             session[:user_id] = @tutor.id
             redirect_to tutor_path(@tutor)
