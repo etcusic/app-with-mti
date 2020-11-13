@@ -10,3 +10,8 @@
     font-size: 30px;
     padding-bottom: 30px;
 }
+
+.big-letters {
+    font-size: 40px;
+    font-weight: bold;
+}

@@ -1,5 +1,6 @@
 class AppointmentsController < ApplicationController
     before_action :appt, only: [:show, :edit, :update, :destroy]
+    skip_before_action :validate_user, only: [:index]
 
     def index
         @appts = Appointment.all

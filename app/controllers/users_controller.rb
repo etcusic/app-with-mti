@@ -24,7 +24,7 @@ class UsersController < ApplicationController
     end
 
     def edit
-        binding.pry
+        # binding.pry
         if @user.is_student?
             redirect_to edit_student_path(@user)
         else

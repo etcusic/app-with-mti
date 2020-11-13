@@ -33,7 +33,7 @@ class ApplicationController < ActionController::Base
 
     def validate_user
         if !users_stuff?
-            redirect_to "/errors/mr_mcgibblets"
+            redirect_to "/nacho_stuff"
         end
     end
 
