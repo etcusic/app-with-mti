@@ -18,4 +18,6 @@ Rails.application.routes.draw do
   resources :students, only: [:index, :edit, :update]
   resources :tutors, only: [:index, :edit, :update]
 
+  get '/nacho_stuff' => 'errors#mr_mcgibblets'
+
 end

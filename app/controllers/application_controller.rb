@@ -1,10 +1,13 @@
 class ApplicationController < ActionController::Base
     add_flash_types :info, :error, :warning
     before_action :require_login, except: [:home]
+    before_action :validate_user, except: [:home]
     helper_method :current_user, :logged_in?, :users_stuff?
 
     def home
     end
+
+    private
 
     def user
         @user = User.find_by_id(session[:user_id])
@@ -24,8 +27,13 @@ class ApplicationController < ActionController::Base
 
     def require_login
         if !session[:user_id]
-            # create error to go along with it
             redirect_to "/login"
+        end
+    end
+
+    def validate_user
+        if !users_stuff?
+            redirect_to "/errors/mr_mcgibblets"
         end
     end
 
