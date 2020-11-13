@@ -1,11 +1,10 @@
-<% if @tutor.errors.any? %>
+<% if @user.errors.any? %>
     <ul>
-        <% @tutor.errors.messages.each do |msg| %>
+        <% @user.errors.messages.each do |msg| %>
             <li><%= display_errors(msg) %></li>
         <% end %>
     </ul>
 <% end %>
-
    
     
 

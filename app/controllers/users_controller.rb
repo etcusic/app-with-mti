@@ -21,7 +21,6 @@ class UsersController < ApplicationController
     end
 
     def edit
-        # validate user?
         if @user.is_student?
             redirect_to edit_student_path(@user)
         else

@@ -15,7 +15,7 @@ class TutorsController < ApplicationController
     def update
         # validate user?
         if @user.update(tutor_params) 
-            redirect_to "users#show" 
+            redirect_to "/users/#{@user.id}" 
         else 
             render :edit
         end

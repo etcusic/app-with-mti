@@ -1,10 +1,4 @@
-<% if @user.errors.any? %>
-    <ul>
-        <% @user.errors.messages.each do |msg| %>
-            <li><%= display_errors(msg) %></li>
-        <% end %>
-    </ul>
-<% end %>
+<%= render partial: 'partials/user_errors' %>
 
 <img class='profile-photo' src="<%= public_profile.image %>", alt="profile pic goes here">
 
