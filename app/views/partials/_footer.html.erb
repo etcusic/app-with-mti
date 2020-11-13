@@ -20,12 +20,12 @@
       <button><%= link_to "Create Appointment!", "/users/#{current_user.id}/appointments/new", method: 'get' %></button>
     <% end %>
 
-    <% if current_user.is_student? && !highest_tutor? %>
-      <button><%= link_to "Highest Rated Tutor!", '/tutors/highest_rated' %></button>
-    <% end %>
-
     <% if current_user.is_student? && !tutors_index? %>
       <button><%= link_to "Meet the Tutors", tutors_path %></button>
+    <% end %>
+
+    <% if current_user.is_student? && !highest_tutors? %>
+      <button><%= link_to "Highest Rated Tutors!", '/tutors/highly_rated' %></button>
     <% end %>
 
     <% if !edit_profile? %>

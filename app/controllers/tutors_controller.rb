@@ -1,6 +1,6 @@
 class TutorsController < ApplicationController
     before_action :user, only: [:edit, :update]
-    skip_before_action :require_login, only: [:highest_rated]
+    skip_before_action :require_login, only: [:index, :highly_rated]
 
     def index
         @tutors = Tutor.ranked_tutors
@@ -22,7 +22,6 @@ class TutorsController < ApplicationController
         # use highly rated
         # is there a better way to scope this route?
         @tutors = Tutor.highly_rated
-        redirect_to "/users/#{@tutor.id}"
     end
 
     private 

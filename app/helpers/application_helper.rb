@@ -37,8 +37,8 @@ module ApplicationHelper
         params[:controller] == "tutor" && params[:action] == "index"
     end
 
-    def highest_tutor?
-        params[:controller] != "tutor" && params[:action] != "index"
+    def highest_tutors?
+        params[:controller] == "tutor" && params[:action] == "highly_rated"
     end
 
 end
