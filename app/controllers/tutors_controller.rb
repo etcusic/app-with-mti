@@ -20,8 +20,6 @@ class TutorsController < ApplicationController
     end
 
     def highly_rated
-        # use highly rated
-        # is there a better way to scope this route?
         @tutors = Tutor.highly_rated
     end
 

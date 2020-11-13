@@ -1,14 +1,19 @@
 class AppointmentsController < ApplicationController
     before_action :appt, only: [:show, :edit, :update, :destroy]
-    skip_before_action :validate_user, only: [:index]
+    skip_before_action :validate_user
+    before_action :validate_user_appts
 
     def index
+        # for once I incorporate admin
         @appts = Appointment.all
     end
 
     def new
-        # Only students can view this page!
-        @appt = current_user.appointments.build
+        if current_user.is_student?
+            @appt = current_user.appointments.build
+        else
+            redirect_to "/users/#{current_user.id}"
+        end
     end
 
     def create  
@@ -21,10 +26,6 @@ class AppointmentsController < ApplicationController
             # error => means they did not select a tutor
             render :new
         end
-    end
-
-    def show
-
     end
 
     def edit
@@ -59,6 +60,12 @@ class AppointmentsController < ApplicationController
             "date_time(4i)",
             "date_time(5i)"
         )
+    end
+
+    def validate_user_appts
+        if params[:user_id] != current_user.id.to_s
+            redirect_to '/nacho_stuff'
+        end
     end
 
 end

@@ -8,7 +8,6 @@
     <h2>Your Appointments:</h2>
     <ul>
         <% current_user.appointments_by_date.each do |appt| %>
-            <%# binding.pry %>
             <li><%= "#{appt.student.full_name}: #{appt.time}" %></li>
         <% end %>
     </ul>
