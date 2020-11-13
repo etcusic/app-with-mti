@@ -1,7 +1,6 @@
 class TutorsController < ApplicationController
     before_action :user, only: [:update]
-    # before_action :tutor, only: [:show, :edit, :update, :destroy]
-    # skip_before_action :require_login, only: [:new, :create, :highest_rated]
+    skip_before_action :require_login, only: [:highest_rated]
 
     def index
         @tutors = Tutor.ranked_tutors

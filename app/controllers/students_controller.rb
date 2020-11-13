@@ -1,6 +1,5 @@
 class StudentsController < ApplicationController
     before_action :user, only: [:update]
-    # skip_before_action :require_login, only: [:new, :create]
 
     def index
         @students = Student.gold_stars
