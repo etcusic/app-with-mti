@@ -2,8 +2,9 @@
 # rails g model Student first_name:string last_name:string email:string password_digest:string about_me:text level:integer gold_stars:integer helicopter_parent:boolean --no-test-framework
 # rails g model Appointment date_time:datetime tutor:belongs_to student:belongs_to --no-test-framework
 
-Tutor.delete_all
-Student.delete_all
+# need to find better photos for: home page(muppets), big bird, and miss piggy (maybe kermit and fozzy as well)
+
+User.delete_all
 Appointment.delete_all
 
 MUPPETS = [
@@ -60,6 +61,7 @@ NAMES = [
     name = NAMES[i].split(" ")
     Tutor.create(
         id: i + 1,
+        # category: "Tutor",
         first_name: MUPPETS[i][:first_name],
         last_name: MUPPETS[i][:last_name],
         email: "#{MUPPETS[i][:first_name].downcase}_#{MUPPETS[i][:last_name].downcase}@mail",
@@ -75,7 +77,8 @@ end
 30.times do | i |
     name = NAMES[i].split(" ")
     Student.create(
-        id: i + 1,
+        id: i + 13,
+        # category: "Student",
         first_name: name[0],
         last_name: name[1],
         email: "#{name[0].downcase}_#{name[1].downcase}@mail",
@@ -94,6 +97,6 @@ end
         id: i + 1,
         date_time: Faker::Time.between_dates(from: Date.today + 10, to: Date.today + 40, period: :day),
         tutor_id: rand(1..12),
-        student_id: rand(1..30)
+        student_id: rand(13..42)
     )
 end
