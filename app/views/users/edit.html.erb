@@ -1,3 +1,5 @@
+<img class='profile-photo' src="<%= public_profile.image %>", alt="profile pic goes here">
+
 <% if @user.errors.any? %>
     <ul>
         <% @user.errors.messages.each do |msg| %>

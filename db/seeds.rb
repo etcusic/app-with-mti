@@ -67,7 +67,7 @@ NAMES = [
         email: "#{MUPPETS[i][:first_name].downcase}_#{MUPPETS[i][:last_name].downcase}@mail",
         password: "password",
         resume: Faker::Lorem.paragraph(sentence_count: 10),
-        zoom_link: Faker::Barcode.isbn, 
+        zoom_link: "zoomyzooms#{rand(100..999)}", 
         rating: rand(1..100),
         puppets: true,
         image: MUPPETS[i][:photo]
