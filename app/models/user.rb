@@ -1,12 +1,13 @@
 class User < ApplicationRecord
-    validates :first_name, :last_name, :email, :category, presence: true
+    self.abstract_class = true
+    validates :first_name, :last_name, :email, presence: true
     validates :email, uniqueness: true, format: { with: /\A[^@\s]+@[^@\s]+\z/, message: "only allows letters with @" }
     validates_confirmation_of :password 
     has_secure_password
 
-    def self.types
-        ["Student", "Tutor"]
-    end
+    # def self.types
+    #     ["Student", "Tutor"]
+    # end
 
     def full_name
         "#{self.first_name} #{self.last_name}"
