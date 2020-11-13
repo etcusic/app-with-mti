@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_11_143533) do
+ActiveRecord::Schema.define(version: 2020_11_13_004655) do
 
   create_table "appointments", force: :cascade do |t|
     t.datetime "date_time"
@@ -35,11 +35,11 @@ ActiveRecord::Schema.define(version: 2020_11_11_143533) do
     t.string "password_digest"
     t.text "resume"
     t.string "zoom_link"
-    t.integer "rating"
+    t.integer "rating", default: 0
     t.boolean "puppets"
     t.text "about_me"
-    t.integer "level"
-    t.integer "gold_stars"
+    t.integer "level", default: 0
+    t.integer "gold_stars", default: 0
     t.boolean "helicopter_parent"
     t.string "type"
     t.string "uid"

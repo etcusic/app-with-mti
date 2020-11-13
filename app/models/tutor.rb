@@ -4,6 +4,7 @@ class Tutor < User
     # validates :resume, :zoom_link, presence: true
 
     def self.ranked_tutors
+        binding.pry
         sorted = Tutor.all.sort_by{|t| t.rating} .reverse
     end
 

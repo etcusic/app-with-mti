@@ -61,6 +61,7 @@ NAMES = [
     name = NAMES[i].split(" ")
     Tutor.create(
         id: i + 1,
+        category: "Tutor",
         first_name: MUPPETS[i][:first_name],
         last_name: MUPPETS[i][:last_name],
         email: "#{MUPPETS[i][:first_name].downcase}_#{MUPPETS[i][:last_name].downcase}@mail",
@@ -77,6 +78,7 @@ end
     name = NAMES[i].split(" ")
     Student.create(
         id: i + 13,
+        category: "Student",
         first_name: name[0],
         last_name: name[1],
         email: "#{name[0].downcase}_#{name[1].downcase}@mail",
@@ -95,6 +97,6 @@ end
         id: i + 1,
         date_time: Faker::Time.between_dates(from: Date.today + 10, to: Date.today + 40, period: :day),
         tutor_id: rand(1..12),
-        student_id: rand(11..40)
+        student_id: rand(13..42)
     )
 end
