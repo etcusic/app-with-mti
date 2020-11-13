@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   # get '/appointments/soonest_available' => 'appointments#soonest_available - if tutors can set up availability
 
   resources :users do
+    # only: [:new, :create, :show, :destroy] ???
     resources :appointments
   end 
 

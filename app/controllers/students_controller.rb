@@ -1,12 +1,9 @@
 class StudentsController < ApplicationController
-    before_action :user, only: [:show, :edit, :update, :destroy]
+    before_action :user, only: [:edit, :update]
 
     def index
         @students = Student.gold_stars
     end
-
-    # def show
-    # end
 
     def edit
     end
