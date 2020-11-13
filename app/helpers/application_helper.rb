@@ -48,3 +48,5 @@ module ApplicationHelper
     def highest_tutor?
         params[:controller] != "tutor" && params[:action] != "index"
     end
+
+end

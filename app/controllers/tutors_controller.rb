@@ -6,8 +6,8 @@ class TutorsController < ApplicationController
         @tutors = Tutor.ranked_tutors
     end
 
-    def show
-    end
+    # def show
+    # end
 
     def edit
     end
@@ -31,7 +31,7 @@ class TutorsController < ApplicationController
 
     def tutor_params
         params.require('tutor').permit(
-            :id, :image, :email, :first_name, :last_name, :password, :password_confirmation,
+            :id, :category, :image, :email, :first_name, :last_name, :password, :password_confirmation,
             :resume, :zoom_link, :puppets
         )
     end
