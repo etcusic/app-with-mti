@@ -1,6 +1,0 @@
-<h1>Students ranked by gold stars - because learning can be competitve too!</h1>
-<ul>
-     <% @students.each do |student| %>
-        <li><%= link_to "#{student.full_name} - #{student.gold_stars}", student_path(student) %></li>
-    <% end %>
-</ul>

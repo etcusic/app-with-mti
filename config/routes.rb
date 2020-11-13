@@ -15,15 +15,7 @@ Rails.application.routes.draw do
     resources :appointments
   end 
 
-  resources :tutors do
-    resources :appointments
-  end 
-
-  resources :students do
-    resources :appointments
-  end 
-
-  # resources :students, only: [:index, :update]
-  # resources :tutors, only: [:index, :update]
+  resources :students, only: [:index, :update]
+  resources :tutors, only: [:index, :update]
 
 end

@@ -1,15 +1,15 @@
 class TutorsController < ApplicationController
-    before_action :user, only: [:update]
+    before_action :user, only: [:show, :edit, :update, :destroy]
     skip_before_action :require_login, only: [:highest_rated]
 
     def index
         @tutors = Tutor.ranked_tutors
     end
 
-    def highest_rated
-        # is there a better way to scope this route?
-        @tutor = Tutor.order(rating: :desc).first
-        redirect_to "/users/#{@tutor.id}"
+    def show
+    end
+
+    def edit
     end
 
     def update
@@ -19,6 +19,12 @@ class TutorsController < ApplicationController
         else 
             render :edit
         end
+    end
+
+    def highest_rated
+        # is there a better way to scope this route?
+        @tutor = Tutor.order(rating: :desc).first
+        redirect_to "/users/#{@tutor.id}"
     end
 
     private 
