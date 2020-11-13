@@ -1,9 +1,5 @@
 module ApplicationHelper
 
-    def users_stuff?
-        session[:user_id] == params[:id].to_i 
-    end
-
     def is_student?
         current_user.is_student?
     end
@@ -14,10 +10,6 @@ module ApplicationHelper
 
     def display_errors(msg)
         "#{msg[0].to_s.capitalize}: #{msg[1][0]}"
-    end
-
-    def permitted_params
-        params.require().permit
     end
 
     # URL IDENTIFIERS
