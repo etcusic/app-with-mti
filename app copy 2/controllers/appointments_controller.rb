@@ -7,7 +7,7 @@ class AppointmentsController < ApplicationController
 
     def new
         # Only students can view this page!
-        @appt = current_user.appointments.build  #Appointment.new
+        @appt = current_user.appointments.build
     end
 
     def create  
@@ -40,6 +40,10 @@ class AppointmentsController < ApplicationController
 
     private
 
+    def appt
+        @appt = Appointment.find_by_id(params[:id])
+    end
+
     def appt_params
         params.require(:appointment).permit(:date_time, :tutor_id, :student_id)
     end
@@ -54,10 +58,6 @@ class AppointmentsController < ApplicationController
             "date_time(4i)",
             "date_time(5i)"
         )
-    end
-
-    def appt
-        @appt = Appointment.find_by_id(params[:id])
     end
 
 end
