@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_13_141818) do
+ActiveRecord::Schema.define(version: 2020_11_13_150803) do
 
   create_table "appointments", force: :cascade do |t|
     t.datetime "date_time"
@@ -23,19 +23,13 @@ ActiveRecord::Schema.define(version: 2020_11_13_141818) do
   end
 
   create_table "students", force: :cascade do |t|
-    t.string "first_name"
-    t.string "last_name"
-    t.string "email"
-    t.string "password_digest"
-    t.string "image", default: "/photos/your_photo.jpeg"
-    t.text "about_me"
-    t.integer "level", default: 0
-    t.integer "gold_stars", default: 0
-    t.boolean "helicopter_parent"
-    t.string "uid"
   end
 
   create_table "tutors", force: :cascade do |t|
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "type"
     t.string "first_name"
     t.string "last_name"
     t.string "email"
@@ -45,6 +39,10 @@ ActiveRecord::Schema.define(version: 2020_11_13_141818) do
     t.string "zoom_link"
     t.integer "rating", default: 0
     t.boolean "puppets"
+    t.text "about_me"
+    t.integer "level", default: 0
+    t.integer "gold_stars", default: 0
+    t.boolean "helicopter_parent"
     t.string "uid"
   end
 
