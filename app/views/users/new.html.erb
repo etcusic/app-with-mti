@@ -1,12 +1,7 @@
-<% if @user.errors.any? %>
-    <ul>
-    <% @user.errors.messages.each do |msg| %>
-        <li><%= display_errors(msg) %></li>
-    <% end %>
-    </ul>
-<% end %>
+<h1>Create your profile! </h1>
 
-<h1>New User: </h1>
+<% render partial: "partials/user_errors" %>
+
 <%= form_with model: @user, local: true do |f| %>
 <%#= form_with url: user_path, method: 'post', local: true do |f| %>
 

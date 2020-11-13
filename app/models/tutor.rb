@@ -9,3 +9,4 @@ class Tutor < User
     end
 
 end
+# Tutor.highly_rated

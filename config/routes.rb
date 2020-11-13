@@ -7,12 +7,11 @@ Rails.application.routes.draw do
   post '/logout' => 'sessions#destroy'
   get '/auth/facebook/callback' => 'sessions#create_with_omniauth'
   
-  get '/tutors/highest_rated' => 'tutors#highest_rated'
+  get '/tutors/highly_rated' => 'tutors#highly_rated'
 
   # get '/appointments/soonest_available' => 'appointments#soonest_available - if tutors can set up availability
 
-  resources :users do
-    # only: [:new, :create, :show, :destroy] ???
+  resources :users, only: [:new, :create, :show, :edit, :destroy] do
     resources :appointments
   end 
 

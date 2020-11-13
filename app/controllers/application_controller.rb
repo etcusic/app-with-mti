@@ -1,13 +1,21 @@
 class ApplicationController < ActionController::Base
     add_flash_types :info, :error, :warning
     before_action :require_login, except: [:home]
-    include ApplicationHelper # pulls methods from ApplicationHelper (current_user) - should I not include entire module?
+    helper_method :current_user, :logged_in?
 
     def home
     end
 
     def user
         @user = User.find_by_id(session[:user_id])
+    end
+
+    def current_user
+        @user ||= User.find_by_id(session[:user_id])
+    end
+
+    def logged_in?
+        session[:user_id]
     end
     
     def require_login

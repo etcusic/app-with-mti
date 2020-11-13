@@ -8,10 +8,12 @@ class UsersController < ApplicationController
 
     def create
         @user = User.new(user_params)
+        # binding.pry
         if @user.save   
             session[:user_id] = @user.id
             @user.update(type: user_params[:category])
             redirect_to edit_user_path(@user)
+            # redirect_to "/users/#{@user.id}/edit"
         else
             render :new
         end
@@ -21,6 +23,7 @@ class UsersController < ApplicationController
     end
 
     def edit
+        binding.pry
         if @user.is_student?
             redirect_to edit_student_path(@user)
         else

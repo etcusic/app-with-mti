@@ -18,9 +18,10 @@ class TutorsController < ApplicationController
         end
     end
 
-    def highest_rated
+    def highly_rated
+        # use highly rated
         # is there a better way to scope this route?
-        @tutor = Tutor.order(rating: :desc).first
+        @tutors = Tutor.highly_rated
         redirect_to "/users/#{@tutor.id}"
     end
 
