@@ -11,16 +11,18 @@ class UsersController < ApplicationController
         if @user.save   
             session[:user_id] = @user.id
             @user.update(type: user_params[:category])
-            redirect_to edit_user_path(@user)
+            @user.type == Student ? edit_student_path(@user) : edit_tutor_path(@user) 
         else
             render :new
         end
     end
 
     def show
+        @user.is_student? ? student_path(@user) : tutor_path(@user)
     end
 
     def edit
+        @user.is_student? ? edit_student_path(@user) : edit_tutor_path(@user)
     end
 
     def destroy

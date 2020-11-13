@@ -26,12 +26,6 @@ class TutorsController < ApplicationController
     def edit
     end
 
-    def highest_rated
-        # is there a better way to scope this route?
-        @tutor = Tutor.order(rating: :desc).first
-        redirect_to "/users/#{@tutor.id}"
-    end
-
     def update
         # validate user?
         if @tutor.update(tutor_params) 
@@ -41,11 +35,10 @@ class TutorsController < ApplicationController
         end
     end
 
-    def destroy
-        # warning/alert message
-        current_user.destroy
-        session.delete(:user_id)
-        redirect_to '/'
+    def highest_rated
+        # is there a better way to scope this route?
+        @tutor = Tutor.order(rating: :desc).first
+        redirect_to "/users/#{@tutor.id}"
     end
 
     private 

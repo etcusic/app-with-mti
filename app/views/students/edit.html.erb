@@ -1,4 +1,12 @@
-<h1>Let's finish setting up your profile!</h1>
+<img class='profile-photo' src="<%= public_profile.image %>", alt="profile pic goes here">
+
+<% if @user.errors.any? %>
+    <ul>
+        <% @user.errors.messages.each do |msg| %>
+            <li><%= display_errors(msg) %></li>
+        <% end %>
+    </ul>
+<% end %>
 
 <%= form_with model: @user, method: 'patch', local: true do |f| %>
 
@@ -23,8 +31,12 @@
     <%= f.label :helicopter_parent, "Do you have a helicopter parent? [y/n]" %>
     <%= f.check_box :helicopter_parent %><br>
     
-    <%# put email confirmation down here %>
-    
     <%= f.submit "Submit Changes" %>
 
 <% end %>
+
+<h3>-- OR --</h3>
+
+<%= button_to "Delete Yo' Self", user_path(@user), method: :delete, confirm: "Are you sure?" %>
+
+<%# { confirm: "Are you sure?" } %>

@@ -61,7 +61,7 @@ NAMES = [
     name = NAMES[i].split(" ")
     Tutor.create(
         id: i + 1,
-        # category: "Tutor",
+        category: "Tutor",
         first_name: MUPPETS[i][:first_name],
         last_name: MUPPETS[i][:last_name],
         email: "#{MUPPETS[i][:first_name].downcase}_#{MUPPETS[i][:last_name].downcase}@mail",
@@ -78,7 +78,7 @@ end
     name = NAMES[i].split(" ")
     Student.create(
         id: i + 13,
-        # category: "Student",
+        category: "Student",
         first_name: name[0],
         last_name: name[1],
         email: "#{name[0].downcase}_#{name[1].downcase}@mail",
