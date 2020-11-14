@@ -16,6 +16,10 @@
       <button><%= link_to "Profile", user_url %></button>
     <% end %>
 
+    <% if current_user.is_tutor? && user_profile? %>
+      <button><%= link_to "All Students", students_path %></button>
+    <% end %>
+
     <% if current_user.is_student? %>
       <% if !tutors_index? %>
         <button><%= link_to "All Tutors", tutors_path %></button>

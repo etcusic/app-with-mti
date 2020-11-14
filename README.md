@@ -34,7 +34,7 @@ CHECKLIST:
 [x] views/students -> _profile; _public; edit; index
 [x] views/appointments -> new; edit; show
 
-FUNCTIONALITY:
+ADDDITIONAL FUNCTIONALITY:
 [ ] Availability model -> belongs_to tutor, all the same attrs as Appointment except doesn't belong to Student (basically a premade appt that a student can select)
 [ ] AvailabilitiesController -> basic CRUD
 [ ] views/availabilities -> new; index (scoped according to Tutor)
