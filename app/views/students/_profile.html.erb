@@ -10,11 +10,11 @@
     <h2>Your Appointments:</h2>
     <ul>
         <% current_user.appointments_by_date.each do |appt| %>
-            <li><%= link_to "#{appt.tutor.full_name}: #{appt.time}", "/users/#{current_user.id}/appointments/#{appt.id}/edit" %></li>
+            <li><%= link_to "#{appt.tutor.full_name}: #{appt.time}", "#{user_url}/appointments/#{appt.id}/edit" %></li>
         <% end %>
     </ul>
 
-    <button><%= link_to "Create Appointment!", "/users/#{current_user.id}/appointments/new", method: 'get' %></button>
+    <button><%= link_to "Create Appointment!", "#{user_url}/appointments/new", method: 'get' %></button>
 
 </div>
 

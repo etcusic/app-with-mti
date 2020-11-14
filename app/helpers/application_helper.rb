@@ -39,11 +39,11 @@ module ApplicationHelper
     end
 
     def tutors_index?
-        params[:controller] == "tutor" && params[:action] == "index"
+        params[:controller] == "tutors" && params[:action] == "index"
     end
 
     def highly_rated_tutors?
-        params[:controller] == "tutor" && params[:action] == "highly_rated"
+        params[:action] == "highly_rated"
     end
 
 end

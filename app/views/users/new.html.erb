@@ -3,7 +3,6 @@
 <% render partial: "partials/user_errors" %>
 
 <%= form_with model: @user, local: true do |f| %>
-<%#= form_with url: user_path, method: 'post', local: true do |f| %>
 
     <%= f.label :category, "Are you a Student or Tutor?" %>
     <%= f.select :category, User.types, {include_blank: true} %><br>
