@@ -57,11 +57,3 @@ class SessionsController < ApplicationController
     
 end
 
-# SessionsController to do list:
-#     - Errors for #create
-#     - Errors for #create_with_omniauth
-#     - #errors? helper method => @user.errors.any? ? redirect_to '/errors' : redirect_to @user
-#     - set password to random in create_with_omniauth
-#     - Omniauth user set up => student or tutor
-#     - revisit require_login in ApplicationController
-#     - #destroy action => are you sure? message (alert?)

@@ -14,7 +14,6 @@ class UsersController < ApplicationController
             session[:user_id] = @user.id
             @user.update(type: user_params[:category])
             redirect_to edit_user_path(@user)
-            # redirect_to "/users/#{@user.id}/edit"
         else
             render :new
         end
