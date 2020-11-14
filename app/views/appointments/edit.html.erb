@@ -1,9 +1,23 @@
-<h1>Appointment:</h1>
+<%= render partial: 'appt_errors'%>
 
-<ul>
-    <li>Tutor: <%= @appt.tutor.full_name %></li>
-    <li>Student: <%= @appt.student.full_name %></li>
-    <li>When: <%= @appt.time %></li>
-</ul>
+<% if current_user.is_student? %>
+
+<h1>Would you like to edit your appointment?</h1>
+
+    <%= form_with model: @appt, url: user_appointment_path(@appt), method: 'patch', local: true do |f| %>
+
+        <%= f.label :tutor_id, "Pick Tutor: " %>
+        <%= f.collection_select(:tutor_id, Tutor.all, :id, :full_name, {:selected => @appt.tutor_id}) %><br>
+
+        <%= f.label :date_time, "Date & Time: " %>
+        <%= f.datetime_select(:date_time, default: @appt.date_time, order: [:month, :day, :year], start_year: 2020, end_year: 2021) %><br>
+
+        <%= f.hidden_field :student_id, value: current_user.id %>
+        <%= f.submit "Update Appointment" %>
+
+    <% end %>
+<% else %>
+    <%= render partial: 'appt'%>
+<% end %>
 
 <%= button_to "Delete Appointment", user_appointment_path(@appt), method: :delete, confirm: "Are you sure?" %>

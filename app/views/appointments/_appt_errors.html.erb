@@ -1,0 +1,7 @@
+<% if @appt.errors.any? %>
+    <ul>
+        <% @appt.errors.messages.each do |msg| %>
+            <li><%= display_errors(msg) %></li>
+        <% end %>
+    </ul>
+<% end %>

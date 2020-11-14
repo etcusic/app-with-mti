@@ -1,15 +1,8 @@
 
 <h1>Make an Appointment!</h1>
 
-<% if @appt.errors.any? %>
-    <ul>
-        <% @appt.errors.messages.each do |msg| %>
-            <li><%= display_errors(msg) %></li>
-        <% end %>
-    </ul>
-<% end %>
+<% render partial: 'appt_errors' %>
 
-<%#= form_with model: @appts, local: true do |f| %>
 <%= form_with(url: "/users/#{current_user.id}/appointments", method: "post") do |f| %>
 
     <%= f.label :tutor_id, "Pick Tutor: " %>

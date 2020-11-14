@@ -1,6 +1,6 @@
 class AppointmentsController < ApplicationController
-    before_action :appt, only: [:edit, :update, :destroy]
-    before_action :validate_user_appts, only: [:edit, :update, :destroy]
+    before_action :appt, only: [:show, :edit, :update, :destroy]
+    before_action :validate_user_appts, only: [:show, :edit, :update, :destroy]
     skip_before_action :validate_user
 
     def index
@@ -26,15 +26,18 @@ class AppointmentsController < ApplicationController
     end
 
     def show
-
     end
 
     def edit
-        # binding.pry
     end
 
     def update
-
+        # binding.pry
+        if @appt.update(appt_params)
+            redirect_to "/users/#{current_user.id}"
+        else
+            render :edit
+        end
     end
 
     def destroy
