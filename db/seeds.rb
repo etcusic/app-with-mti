@@ -8,18 +8,18 @@ User.delete_all
 Appointment.delete_all
 
 MUPPETS = [
-    {first_name: "Big", last_name: "Bird", photo: "/photos/big_bird.jpg"},
+    {first_name: "Dr", last_name: "Beaker", photo: "/photos/dr_beaker.jpg"},
     {first_name: "Fozzy", last_name: "Bear", photo: "/photos/fozzy_bear.webp"},
     {first_name: "Gonzo", last_name: "TheGreat", photo: "/photos/gonzo_thegreat.jpg"},
     {first_name: "Kermit", last_name: "Frog", photo: "/photos/kermit_frog.jpg"},
     {first_name: "Miss", last_name: "Piggy", photo: "/photos/miss_piggy.jpg"},
-    {first_name: "Dr", last_name: "Beaker", photo: "/photos/dr_beaker.jpg"},
+    {first_name: "Mister", last_name: "Animal", photo: "/photos/mister_animal.jpeg"},
+    {first_name: "Pepe", last_name: "Prawn", photo: "/photos/pepe_prawn.jpg"},
     {first_name: "Professor", last_name: "Bunsen", photo: "/photos/professor_bunsen.jpg"},
     {first_name: "Rizzo", last_name: "Rat", photo: "/photos/rizzo_rat.png"},
     {first_name: "Sam", last_name: "Eagle", photo: "/photos/sam_eagle.jpg"},
     {first_name: "Scoo", last_name: "Ter", photo: "/photos/scoo_ter.jpg"},
-    {first_name: "Swedish", last_name: "Chef", photo: "/photos/swedish_chef.png"},
-    {first_name: "Mister", last_name: "Animal", photo: "/photos/the_animal.jpeg"}
+    {first_name: "Swedish", last_name: "Chef", photo: "/photos/swedish_chef.png"}
 ]
 
 NAMES = [
