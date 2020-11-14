@@ -16,7 +16,7 @@
       <button><%= link_to "Profile", user_url %></button>
     <% end %>
 
-    <% if current_user.is_tutor? && user_profile? %>
+    <% if user_profile? && current_user.is_tutor? %>
       <button><%= link_to "All Students", students_path %></button>
     <% end %>
 
