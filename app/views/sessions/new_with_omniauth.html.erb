@@ -1,11 +1,8 @@
 <h1>Let's set up your profile! </h1>
 <%= form_with model: @user, method: 'post', local: true do |f| %>
-<%#= form_with(url: "/users", method: "post") do |f| %>
 
-
-    <%= f.label :type, "Are you a Student or Tutor?" %>
-    <%= f.select :type, User.types, {include_blank: true} %><br>
-
+    <%= f.label :category, "Are you a Student or Tutor?" %>
+    <%= f.select :category, User.types, {include_blank: true} %><br>
 
     <%= f.label :first_name, "First Name" %>
     <%= f.text_field :first_name %><br>

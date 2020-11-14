@@ -22,7 +22,7 @@ class ApplicationController < ActionController::Base
     end
     
     def users_stuff?
-        session[:user_id] == params[:id].to_i 
+        session[:user_id] == params[:id].to_i || session[:user_id] == params[:user_id].to_i
     end
 
     def require_login

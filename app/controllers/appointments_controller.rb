@@ -1,7 +1,7 @@
 class AppointmentsController < ApplicationController
     before_action :appt, only: [:edit, :update, :destroy]
     skip_before_action :validate_user
-    before_action :validate_user_appts
+    # before_action :validate_user_appts
 
     def index
         # for when I incorporate admin
@@ -25,6 +25,10 @@ class AppointmentsController < ApplicationController
         end
     end
 
+    def show
+
+    end
+
     def edit
 
     end
@@ -34,7 +38,9 @@ class AppointmentsController < ApplicationController
     end
 
     def destroy
-
+        binding.pry
+        @appt.destroy
+        redirect_to "/users/#{current_user}"
     end
 
     private

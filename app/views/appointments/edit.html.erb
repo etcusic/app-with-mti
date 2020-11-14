@@ -1,0 +1,10 @@
+<h1>Appointment:</h1>
+
+<ul>
+    <li>Tutor: <%= @appt.tutor.full_name %></li>
+    <li>Student: <%= @appt.student.full_name %></li>
+    <li>When: <%= @appt.time %></li>
+</ul>
+
+<%= button_to "Delete Appointment", user_appointment_path(@appt), method: :delete, confirm: "Are you sure?" %>
+<%# url: "/users/#{current_user.id}/appointments/#{@appt.id}" %>
