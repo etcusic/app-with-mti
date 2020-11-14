@@ -1,4 +1,9 @@
-<h1>All Tutors (listed in order of rating)</h1>
+<% if params[:action] == "index" %>
+    <h1>All Tutors (listed in order of rating)</h1>
+<% elsif params[:action] == "highly_rated" %>
+    <h1>Highly rated tutors (50+ rating)</h1>
+<% end %>
+
 <ul>
      <% @tutors.each do |tutor| %>
         <li class='tutors'>
@@ -9,4 +14,3 @@
     <% end %>
 </ul>
 
-<%#= alert_the_system %><br>

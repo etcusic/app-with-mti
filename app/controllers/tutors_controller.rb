@@ -19,7 +19,8 @@ class TutorsController < ApplicationController
     end
 
     def highly_rated
-        @tutors = Tutor.highly_rated
+        @tutors = Tutor.highly_rated.ranked_tutors
+        render :index
     end
 
     private 
