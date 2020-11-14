@@ -1,7 +1,6 @@
 module ApplicationHelper
 
     def public_profile
-        # binding.pry
         params.permit(:id, :user_id)
         if params[:user_id]
             @public_user = User.find_by_id(params[:user_id])

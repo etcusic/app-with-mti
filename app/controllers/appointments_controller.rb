@@ -1,7 +1,7 @@
 class AppointmentsController < ApplicationController
     before_action :appt, only: [:edit, :update, :destroy]
+    before_action :validate_user_appts, only: [:edit, :update, :destroy]
     skip_before_action :validate_user
-    # before_action :validate_user_appts
 
     def index
         # for when I incorporate admin
@@ -30,7 +30,7 @@ class AppointmentsController < ApplicationController
     end
 
     def edit
-
+        # binding.pry
     end
 
     def update
@@ -38,9 +38,8 @@ class AppointmentsController < ApplicationController
     end
 
     def destroy
-        binding.pry
         @appt.destroy
-        redirect_to "/users/#{current_user}"
+        redirect_to "/users/#{current_user.id}"
     end
 
     private
@@ -66,7 +65,7 @@ class AppointmentsController < ApplicationController
     end
 
     def validate_user_appts
-        if params[:user_id] != current_user.id.to_s
+        if @appt.student_id != current_user.id && @appt.tutor_id != current_user.id
             redirect_to '/nacho_stuff'
         end
     end
