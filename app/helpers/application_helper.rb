@@ -21,6 +21,14 @@ module ApplicationHelper
         "#{msg[0].to_s.capitalize}: #{msg[1][0]}"
     end
 
+    def appt_path
+        "/users/#{current_user.id}/appointments/#{@appt.id}"
+    end
+
+    def delete_profile
+        link_to "Delete Profile", "/users/#{current_user.id}", method: 'delete', data: { confirm: "Are you sure you want to delete your profile?" }
+    end
+
     # URL IDENTIFIERS
     def user_profile?
         params[:controller] == "users" && params[:action] == "show" && params[:id] == current_user.id.to_s

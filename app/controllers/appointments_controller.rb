@@ -1,7 +1,5 @@
 class AppointmentsController < ApplicationController
     before_action :appt, only: [:show, :edit, :update, :destroy]
-    before_action :validate_user_appts, only: [:show, :edit, :update, :destroy]
-    skip_before_action :validate_user
 
     def index
         # for when I incorporate admin
@@ -64,12 +62,6 @@ class AppointmentsController < ApplicationController
             "date_time(4i)",
             "date_time(5i)"
         )
-    end
-
-    def validate_user_appts
-        if @appt.student_id != current_user.id && @appt.tutor_id != current_user.id
-            redirect_to '/nacho_stuff'
-        end
     end
 
 end

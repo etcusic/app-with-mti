@@ -4,10 +4,11 @@
 
     <h1>Would you like to edit your appointment?</h1>
 
-    <%= form_with model: @appt, url: user_appointment_path(@appt), method: 'patch', local: true do |f| %>
+    <%= form_with model: @appt, url: appt_path, method: 'patch', local: true do |f| %>
+    <%# user_appointment_path(@appt) %>
 
         <%= f.label :tutor_id, "Pick Tutor: " %>
-        <%= f.collection_select(:tutor_id, Tutor.all, :id, :full_name, {:selected => @appt.tutor_id}) %><br>
+        <%= f.collection_select(:tutor_id, Tutor.all, :id, :full_name, { :selected => @appt.tutor_id }) %><br>
 
         <%= f.label :date_time, "Date & Time: " %>
         <%= f.datetime_select(:date_time, default: @appt.date_time, order: [:month, :day, :year], start_year: 2020, end_year: 2021) %><br>
@@ -25,7 +26,7 @@
 
 <% end %>
 
-<%= button_to "Delete Appointment", user_appointment_path(@appt), method: :delete, confirm: "Are you sure?" %>
+<button><%= link_to "Delete Appointment", appt_path, method: 'delete', data: { confirm: "Are you sure?" } %></button>
 
 <% if current_user.is_student? %>
     <h3>-- OR --</h3>
