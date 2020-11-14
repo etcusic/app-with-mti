@@ -13,5 +13,8 @@
             <li><%= link_to "#{appt.tutor.full_name}: #{appt.time}", "/users/#{current_user.id}/appointments/#{appt.id}/edit" %></li>
         <% end %>
     </ul>
+
+    <button><%= link_to "Create Appointment!", "/users/#{current_user.id}/appointments/new", method: 'get' %></button>
+
 </div>
 

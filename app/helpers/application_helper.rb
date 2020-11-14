@@ -26,10 +26,6 @@ module ApplicationHelper
         params[:controller] == "users" && params[:action] == "show" && params[:id] == current_user.id.to_s
     end
 
-    def edit_profile?
-        params[:controller] == "users" && params[:action] == "edit"
-    end
-
     def new_appt?
         params[:controller] == "appointments" && params[:action] == "new"
     end
@@ -38,7 +34,7 @@ module ApplicationHelper
         params[:controller] == "tutor" && params[:action] == "index"
     end
 
-    def highest_tutors?
+    def highly_rated_tutors?
         params[:controller] == "tutor" && params[:action] == "highly_rated"
     end
 

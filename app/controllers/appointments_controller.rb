@@ -32,7 +32,6 @@ class AppointmentsController < ApplicationController
     end
 
     def update
-        # binding.pry
         if @appt.update(appt_params)
             redirect_to "/users/#{current_user.id}"
         else

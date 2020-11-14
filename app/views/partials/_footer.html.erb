@@ -7,28 +7,26 @@
     <button><%= link_to 'Log in with Facebook', '/auth/facebook' %></button>
     
     <% if !tutors_index? %>
-      <button><%= link_to "All Tutors", '/tutors' %></button>
+      <button><%= link_to "Meet the Tutors!", '/tutors' %></button>
     <% end %>
-  
+
   <% else %>
 
     <% if !user_profile? %>
       <button><%= link_to "Profile", user_path(current_user) %></button>
     <% end %>
 
-    <% if current_user.is_student? && !new_appt? %>
-      <button><%= link_to "Create Appointment!", "/users/#{current_user.id}/appointments/new", method: 'get' %></button>
+    <% if current_user.is_student? %>
+      <% if !tutors_index? %>
+        <button><%= link_to "All Tutors", tutors_path %></button>
+      <% end %>
+
+      <% if !highly_rated_tutors? %>
+        <button><%= link_to "Highest Rated Tutors!", '/tutors/highly_rated' %></button>
+      <% end %>
     <% end %>
 
-    <% if current_user.is_student? && !tutors_index? %>
-      <button><%= link_to "Meet the Tutors", tutors_path %></button>
-    <% end %>
-
-    <% if current_user.is_student? && !highest_tutors? %>
-      <button><%= link_to "Highest Rated Tutors!", '/tutors/highly_rated' %></button>
-    <% end %>
-
-    <% if !edit_profile? %>
+    <% if user_profile? %>
         <button><%= link_to "Edit Profile", edit_user_path(current_user) %></button>
     <% end %>
 
@@ -39,5 +37,5 @@
   <% if params[:action] != "home" %>
     <button><%= link_to "Home Page", '/' %></button>
   <% end %>
-  
+  <%# binding.pry %>
 </div>

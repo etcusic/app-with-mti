@@ -2,7 +2,7 @@
 
 <% if current_user.is_student? %>
 
-<h1>Would you like to edit your appointment?</h1>
+    <h1>Would you like to edit your appointment?</h1>
 
     <%= form_with model: @appt, url: user_appointment_path(@appt), method: 'patch', local: true do |f| %>
 
@@ -15,9 +15,19 @@
         <%= f.hidden_field :student_id, value: current_user.id %>
         <%= f.submit "Update Appointment" %>
 
+        <h3>-- OR --</h3>
+
     <% end %>
+
 <% else %>
+    
     <%= render partial: 'appt'%>
+
 <% end %>
 
 <%= button_to "Delete Appointment", user_appointment_path(@appt), method: :delete, confirm: "Are you sure?" %>
+
+<% if current_user.is_student? %>
+    <h3>-- OR --</h3>
+    <button><%= link_to "Create Appointment!", "/users/#{current_user.id}/appointments/new", method: 'get' %></button>
+<%end%>
