@@ -13,7 +13,7 @@
   <% else %>
 
     <% if !user_profile? %>
-      <button><%= link_to "Profile", user_path(current_user) %></button>
+      <button><%= link_to "Profile", user_url %></button>
     <% end %>
 
     <% if current_user.is_student? %>
@@ -37,5 +37,5 @@
   <% if params[:action] != "home" %>
     <button><%= link_to "Home Page", '/' %></button>
   <% end %>
-  <%# binding.pry %>
+
 </div>

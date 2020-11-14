@@ -10,14 +10,14 @@ class AppointmentsController < ApplicationController
         if current_user.is_student?
             @appt = current_user.appointments.build
         else
-            redirect_to "/users/#{current_user.id}"
+            redirect_to user_url
         end
     end
 
     def create  
         @appt = Appointment.new_with_params(new_appt_params)
         if @appt.save
-            redirect_to "/users/#{current_user.id}"
+            redirect_to user_url
         else
             render :new
         end
@@ -31,7 +31,7 @@ class AppointmentsController < ApplicationController
 
     def update
         if @appt.update(appt_params)
-            redirect_to "/users/#{current_user.id}"
+            redirect_to user_url
         else
             render :edit
         end
@@ -39,7 +39,7 @@ class AppointmentsController < ApplicationController
 
     def destroy
         @appt.destroy
-        redirect_to "/users/#{current_user.id}"
+        redirect_to user_url
     end
 
     private

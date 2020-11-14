@@ -24,7 +24,6 @@ class UsersController < ApplicationController
     end
 
     def edit
-        # binding.pry
         if @user.is_student?
             redirect_to edit_student_path(@user)
         else
@@ -33,7 +32,6 @@ class UsersController < ApplicationController
     end
 
     def destroy
-        # warning/alert message
         current_user.destroy
         session.delete(:user_id)
         redirect_to '/'

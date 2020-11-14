@@ -30,5 +30,5 @@
 
 <% if current_user.is_student? %>
     <h3>-- OR --</h3>
-    <button><%= link_to "Create Appointment!", "/users/#{current_user.id}/appointments/new", method: 'get' %></button>
+    <button><%= link_to "Create Appointment!", "#{user_url}/appointments/new", method: 'get' %></button>
 <%end%>
