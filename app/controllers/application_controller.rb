@@ -41,11 +41,5 @@ class ApplicationController < ActionController::Base
         "/users/#{current_user.id}"
     end
 
-    # what is the best way to work in #current_user 
-    # right now it is in ApplicationHelper module, and that module is included in ApplicationController, which all other controllers inherit from
-    # (if !helpers.current_user) => alternative to include ApplicationHelper at top of AppController
-
-    #valid_request? method for users to see what they're allowed to - here or users controller? I think here
-
 end
 
