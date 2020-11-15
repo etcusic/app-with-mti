@@ -9,9 +9,8 @@ class SessionsController < ApplicationController
         @user = User.find_by(email: session_params[:email])
         if @user && @user.authenticate(session_params[:password])
             initialize_session
-            redirect_to user_path(@user)
+            redirect_to user_url
         else
-            # check for errors and redirect to errors page
             flash[:error] = "Invalid email or password. Please try again."
             redirect_to '/login'
         end
@@ -21,7 +20,7 @@ class SessionsController < ApplicationController
         @user = User.find_by(email: auth['info']['email'])
         if @user
             initialize_session
-            redirect_to "/users/#{@user.id}"
+            redirect_to user_url
         else
             name = auth['info']['name'].split(" ")
             @user = User.new(
@@ -29,7 +28,7 @@ class SessionsController < ApplicationController
                 email: auth['info']['email'],
                 first_name: name[0],
                 last_name: name[1],
-                image: auth['info']['image']                
+                image: auth['info']['image']
             )
             render :new_with_omniauth
         end

@@ -2,7 +2,7 @@ class ApplicationController < ActionController::Base
     add_flash_types :info, :error, :warning
     before_action :require_login, except: [:home]
     before_action :validate_user, except: [:home]
-    helper_method :current_user, :logged_in?, :users_stuff?
+    helper_method :current_user, :logged_in?, :users_stuff?, :user_url
 
     def home
     end
@@ -35,6 +35,10 @@ class ApplicationController < ActionController::Base
         if !users_stuff?
             redirect_to "/nacho_stuff"
         end
+    end
+
+    def user_url
+        "/users/#{current_user.id}"
     end
 
     # what is the best way to work in #current_user 
