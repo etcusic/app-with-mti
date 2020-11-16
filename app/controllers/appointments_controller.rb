@@ -10,6 +10,7 @@ class AppointmentsController < ApplicationController
         if current_user.is_student?
             @appt = current_user.appointments.build
         else
+            flash[:error] = "Only students can create appointments"
             redirect_to user_url
         end
     end

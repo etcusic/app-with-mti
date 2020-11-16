@@ -9,8 +9,6 @@ To use this app, clone the repository and run the following commands in your CLI
 - rails s
 - (to initialize the seed data, type in 'rake db:seed' into your console)
 
-(this application was created and run on a Mac)
-
 Assuming everything installs and runs correctly, copy and paste http://localhost:3000 into your browser's address bar, which should take you to the landing page. From there, click on either "Create Profile" or "Log in with Facebook" to get started as a tutor or a student!
 
 License: https://github.com/etcusic/app-with-mti/blob/master/LICENSE.md
@@ -35,6 +33,7 @@ CHECKLIST:
 [x] views/appointments -> new; edit; show
 
 ADDDITIONAL FUNCTIONALITY:
+[ ] Strong password format; edit password in users#edit
 [ ] Availability model -> belongs_to tutor, all the same attrs as Appointment except doesn't belong to Student (basically a premade appt that a student can select)
 [ ] AvailabilitiesController -> basic CRUD
 [ ] views/availabilities -> new; index (scoped according to Tutor)
@@ -45,6 +44,7 @@ ADDDITIONAL FUNCTIONALITY:
 [ ] Message model -> belongs_to tutor and student
 [ ] MessagesController -> index, new, create, show, destroy
 [ ] views/messages -> index; new; show
+[ ] Admin class
 
 CSS:
 [ ]
