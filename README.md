@@ -13,6 +13,11 @@ Assuming everything installs and runs correctly, copy and paste http://localhost
 
 License: https://github.com/etcusic/app-with-mti/blob/master/LICENSE.md
 
+Corresponding blog submission: https://etcusic.github.io/sti_mti_and_different_types_of_users 
+
+Other iterations (trying different back end structures):
+    -  https://github.com/etcusic/tutoring-app  ->  UsersController parent class (Tutors and Students controllers inherit from)
+
 CHECKLIST:
 [x] Generate resource User as single table inheritance -> Tutor and Student inherit from User
 [x] User model -> validates :first_name, :last_name, :email, has_secure_password - email is unique and validates correct format
