@@ -13,10 +13,9 @@ Assuming everything installs and runs correctly, copy and paste http://localhost
 
 License: https://github.com/etcusic/app-with-mti/blob/master/LICENSE.md
 
-Corresponding blog submission: https://etcusic.github.io/sti_mti_and_different_types_of_users 
-
-Other iterations (trying different back end structures):
-    -  https://github.com/etcusic/tutoring-app  ->  UsersController parent class (Tutors and Students controllers inherit from)
+Corresponding blog submissions: 
+    Backend structure (STI vs MTI) - https://etcusic.github.io/sti_mti_and_different_types_of_users 
+    UsersController Inheritance - https://etcusic.github.io/many_to_many_relationship_b_t_tables_that_inherit_from_user_table 
 
 CHECKLIST:
 [x] Generate resource User as single table inheritance -> Tutor and Student inherit from User
@@ -38,6 +37,8 @@ CHECKLIST:
 [x] views/appointments -> new; edit; show
 
 ADDDITIONAL FUNCTIONALITY:
+[ ] Clean up sessions controller with omniauth
+[ ] Incorporate vanity urls
 [ ] Strong password format; edit password in users#edit
 [ ] Availability model -> belongs_to tutor, all the same attrs as Appointment except doesn't belong to Student (basically a premade appt that a student can select)
 [ ] AvailabilitiesController -> basic CRUD
@@ -46,22 +47,16 @@ ADDDITIONAL FUNCTIONALITY:
 [ ] Comment model -> belongs_to appointment
 [ ] CommentsController -> index, new, create, show, destroy
 [ ] views/partials/_comment -> put in appointments/show page
-[ ] Message model -> belongs_to tutor and student
+[ ] Message model -> belongs_to tutor and student (polymorphic association?)
 [ ] MessagesController -> index, new, create, show, destroy
 [ ] views/messages -> index; new; show
 [ ] Admin class
 
-CSS:
-[ ]
-[ ]
-[ ]
-[ ]
-[ ]
-[ ]
-[ ]
-[ ]
-[ ]
-[ ]
-[ ]
+CSS: (materialize)
+[ ] Home page
+[ ] User show pages - different background colors for students and tutors
+[ ] Form pages
+[ ] Appointment edit page
+[ ] Index pages
 [ ]
 [ ]
