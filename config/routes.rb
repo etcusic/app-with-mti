@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   post '/logout' => 'sessions#destroy'
   get '/auth/facebook/callback' => 'sessions#create_with_omniauth'
 
+  get '/tutors/highly_rated' => 'tutors#highly_rated'
+
   resources :appointments, only: [:new, :create]
 
   resources :students do
@@ -18,8 +20,6 @@ Rails.application.routes.draw do
   end 
  
   # get '/appointments/soonest_available' => 'appointments#soonest_available - if tutors can set up availability
-
-  get '/tutors/highly_rated' => 'tutors#highly_rated'
 
   get '/nacho_stuff' => 'errors#nacho_stuff'
 

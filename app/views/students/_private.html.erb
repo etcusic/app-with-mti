@@ -10,7 +10,7 @@
     <h2>Your Appointments:</h2>
     <ul>
         <% current_user.appointments_by_date.each do |appt| %>
-            <li><%= link_to "#{appt.tutor.full_name}: #{appt.time}", edit_tutor_appointment_path(current_user, appt) %></li>
+            <li><%= link_to "#{appt.tutor.full_name}: #{appt.time}", edit_student_appointment_path(current_user, appt) %></li>
         <% end %>
     </ul>
 

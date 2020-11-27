@@ -2,7 +2,7 @@ class ApplicationController < ActionController::Base
     add_flash_types :info, :error, :warning
     before_action :require_login, except: [:home]
     before_action :validate_user, except: [:home]
-    helper_method :current_user, :logged_in?, :users_stuff?
+    helper_method :current_user, :logged_in?, :users_stuff? #, :user_url, :direct_to_show, :direct_to_edit
 
     def home
     end
@@ -10,6 +10,7 @@ class ApplicationController < ActionController::Base
     private
 
     def current_user
+        # advantage of single table inheritance - or does this work with MTI as well?
         @user ||= User.find_by_id(session[:user_id])
     end
 
@@ -17,9 +18,9 @@ class ApplicationController < ActionController::Base
         session[:user_id]
     end
     
-    # Can this be cleaned up?
+    # Can this be cleaned up? - 
     def users_stuff?
-        session[:user_id] == params[:id].to_i || session[:user_id] == params[:user_id].to_i
+        session[:user_id] == params[:id].to_i || session[:user_id] == params[:student_id].to_i || session[:user_id] == params[:tutor_id].to_i
     end
 
     def require_login
@@ -35,4 +36,3 @@ class ApplicationController < ActionController::Base
     end
 
 end
-

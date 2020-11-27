@@ -1,5 +1,6 @@
 class AppointmentsController < ApplicationController
     before_action :appt, only: [:show, :edit, :update, :destroy]
+    skip_before_action :validate_user, only: [:new, :create]
 
     def index
         # for when I incorporate admin
@@ -16,7 +17,7 @@ class AppointmentsController < ApplicationController
     end
 
     def create  
-        @appt = Appointment.new_with_params(new_appt_params)
+        @appt = Appointment.new_with_params(appt_params)
         if @appt.save
             redirect_to current_user.url
         else

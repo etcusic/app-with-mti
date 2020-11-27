@@ -1,4 +1,4 @@
-class TutorsController < ApplicationController
+class TutorsController < UsersController
     skip_before_action :require_login, only: [:index, :highly_rated]
     skip_before_action :validate_user, only: [:index, :highly_rated, :search]
 
@@ -8,6 +8,7 @@ class TutorsController < ApplicationController
 
     def highly_rated
         @tutors = Tutor.highly_rated.ranked_tutors
+        binding.pry
         render :index
     end
 

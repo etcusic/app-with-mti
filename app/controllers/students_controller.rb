@@ -1,4 +1,4 @@
-class StudentsController < ApplicationController
+class StudentsController < UsersController
     skip_before_action :validate_user, only: [:index]
 
     def index
