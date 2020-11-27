@@ -1,21 +1,9 @@
 class TutorsController < ApplicationController
-    before_action :user, only: [:edit, :update]
     skip_before_action :require_login, only: [:index, :highly_rated]
-    skip_before_action :validate_user, only: [:index, :highly_rated]
+    skip_before_action :validate_user, only: [:index, :highly_rated, :search]
 
     def index
         @tutors = Tutor.ranked_tutors
-    end
-
-    def edit
-    end
-
-    def update
-        if @user.update(tutor_params) 
-            redirect_to user_url 
-        else 
-            render :edit
-        end
     end
 
     def highly_rated
@@ -23,13 +11,17 @@ class TutorsController < ApplicationController
         render :index
     end
 
-    private 
+    private
 
-    def tutor_params
-        params.require('tutor').permit(
-            :id, :category, :image, :email, :first_name, :last_name, :password, :password_confirmation,
-            :resume, :zoom_link, :puppets
+    def user_params
+        params.require(:tutor).permit(
+            :id, :type, :image, :email, :first_name, :last_name, :password, :password_confirmation,
+            :resume, :zoom_link, :puppets, :rating
         )
+    end
+
+    def new_user
+        user = Tutor.new
     end
 
 end

@@ -4,16 +4,14 @@ class UsersController < ApplicationController
     skip_before_action :validate_user, only: [:new, :create, :show]
 
     def new
-        @user = User.new
+        @user = new_user
     end
 
     def create
         @user = User.new(user_params)
-        # binding.pry
         if @user.save   
             session[:user_id] = @user.id
-            @user.update(type: user_params[:category])
-            redirect_to edit_user_path(@user)
+            redirect_to @user.url
         else
             render :new
         end
@@ -23,10 +21,13 @@ class UsersController < ApplicationController
     end
 
     def edit
-        if @user.is_student?
-            redirect_to edit_student_path(@user)
-        else
-            redirect_to edit_tutor_path(@user)
+    end
+
+    def update
+        if @user.update(user_params)
+            redirect_to @user.url
+        else 
+            render :edit
         end
     end
 
@@ -34,16 +35,6 @@ class UsersController < ApplicationController
         current_user.destroy
         session.delete(:user_id)
         redirect_to '/'
-    end
-
-    private
-
-    def user_params
-        params.require(:user).permit(
-            :id, :category, :type, :image, :email, :first_name, :last_name, :password, :password_confirmation,
-            :resume, :zoom_link, :puppets,
-            :about_me, :level, :helicopter_parent
-        )
     end
 
 end
