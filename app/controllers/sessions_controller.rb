@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
         @user = User.find_by(email: session_params[:email])
         if @user && @user.authenticate(session_params[:password])
             initialize_session
-            redirect_to user_url
+            redirect_to current_user.url
         else
             flash[:error] = "Invalid email or password. Please try again."
             redirect_to '/login'
@@ -18,21 +18,12 @@ class SessionsController < ApplicationController
 
     def create_with_omniauth
         @user = User.find_by(email: auth['info']['email'])
-        if @user
-            initialize_session
-            redirect_to user_url
-        else
-            name = auth['info']['name'].split(" ")
-            @user = User.new(
-                uid: auth['uid'],
-                email: auth['info']['email'],
-                first_name: name[0],
-                last_name: name[1],
-                image: auth['info']['image']
-            )
-            render :new_with_omniauth
+        #does this account for invalid data sent from facebook or wherever?
+        if !@user
+            User.new_user_omni
         end
-        
+        initialize_session
+        redirect_to @user.url
     end
 
     def destroy

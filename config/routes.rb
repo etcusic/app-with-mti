@@ -6,13 +6,16 @@ Rails.application.routes.draw do
   post '/login' => 'sessions#create'
   post '/logout' => 'sessions#destroy'
   get '/auth/facebook/callback' => 'sessions#create_with_omniauth'
- 
-  resources :users, only: [:new, :create, :show, :edit, :destroy] do
-    resources :appointments
+
+  resources :appointments, only: [:new, :create]
+
+  resources :students do
+    resources :appointments, only: [:index, :show, :edit, :update, :destroy]
   end 
 
-  resources :students, only: [:index, :edit, :update]
-  resources :tutors, only: [:index, :edit, :update]
+  resources :tutors do
+    resources :appointments, only: [:index, :show, :edit, :update, :destroy]
+  end 
  
   # get '/appointments/soonest_available' => 'appointments#soonest_available - if tutors can set up availability
 

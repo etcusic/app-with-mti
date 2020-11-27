@@ -11,14 +11,14 @@ class AppointmentsController < ApplicationController
             @appt = current_user.appointments.build
         else
             flash[:error] = "Only students can create appointments"
-            redirect_to user_url
+            redirect_to current_user.url
         end
     end
 
     def create  
         @appt = Appointment.new_with_params(new_appt_params)
         if @appt.save
-            redirect_to user_url
+            redirect_to current_user.url
         else
             render :new
         end
@@ -32,7 +32,7 @@ class AppointmentsController < ApplicationController
 
     def update
         if @appt.update(appt_params)
-            redirect_to user_url
+            redirect_to current_user.url
         else
             render :edit
         end
@@ -40,7 +40,7 @@ class AppointmentsController < ApplicationController
 
     def destroy
         @appt.destroy
-        redirect_to user_url
+        redirect_to current_user.url
     end
 
     private
@@ -51,18 +51,6 @@ class AppointmentsController < ApplicationController
 
     def appt_params
         params.require(:appointment).permit(:date_time, :tutor_id, :student_id)
-    end
-
-    def new_appt_params
-        params.permit(
-            "student_id",
-            "tutor_id",
-            "date_time(1i)",
-            "date_time(2i)",
-            "date_time(3i)",
-            "date_time(4i)",
-            "date_time(5i)"
-        )
     end
 
 end
