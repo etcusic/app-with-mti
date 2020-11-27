@@ -2,7 +2,11 @@
 
 <img class='profile-photo' src="<%= public_profile.image %>", alt="profile pic goes here">
 
-<%= form_with model: @user, method: 'patch', local: true do |f| %>
+<%#needs a password change option%>
+
+<%= form_with model: @user, local: true do |f| %>
+
+    <%= f.hidden_field :type, value: "Student" %>
 
     <%= f.label :first_name, "First Name" %>
     <%= f.text_field :first_name %><br>
@@ -12,10 +16,10 @@
 
     <%= f.label :email, "Email" %>
     <%= f.text_field :email %><br>
-
+    
     <%= f.label :image, "Image Url:" %>
     <%= f.text_field :image %><br>
-    
+   
     <%= f.label :level, "Level:" %>
     <%= f.number_field :level, in: 1..100 %><br>
 
@@ -24,13 +28,21 @@
 
     <%= f.label :helicopter_parent, "Do you have a helicopter parent? [y/n]" %>
     <%= f.check_box :helicopter_parent %><br>
-    
-    <%= f.hidden_field :category, value: "Student" %>
 
-    <%= f.submit "Submit Changes" %>
+    <%= f.submit "Submit Profile!" %>
 
 <% end %>
+
 
 <h3>-- OR --</h3>
 
 <button><%= delete_profile %></button>
+
+<br><br>
+
+<div class='centered'>
+    <button><%= link_to "Profile", current_user.url %></button>
+    <button><%= link_to "All Tutors", tutors_path %></button>
+    <button><%= link_to "Highest Rated Tutors", '/tutors/highly_rated' %></button>
+    <button><%= link_to "Home Page", '/' %></button>
+</div>
