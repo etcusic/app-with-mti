@@ -4,4 +4,9 @@ class Tutor < User
     scope :highly_rated, -> { where('rating > ?', 49) }
     scope :ranked_tutors, ->(column = :rating) { order(column => :desc) }
 
+    # should I incorporate this into users_table and assign upon creation?
+    def url
+        "/tutors/#{self.id}"
+    end
+
 end
