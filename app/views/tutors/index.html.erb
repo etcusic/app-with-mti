@@ -7,10 +7,16 @@
 <ul>
      <% @tutors.each do |tutor| %>
         <li class='tutors'>
-            <%= link_to "#{tutor.full_name}", user_path(tutor) %>
+            <%= link_to "#{tutor.full_name}", tutor_path(tutor) %>
             (rating: <%= tutor.rating %>)<br>
             <img src="<%= tutor.image %>", alt="tutor photo here">
         </li>
     <% end %>
 </ul>
 
+<br><br>
+
+<div class='centered'>
+    <button><%= link_to "Profile", current_user.url %></button>
+    <button><%= link_to "Home Page", '/' %></button>
+</div>

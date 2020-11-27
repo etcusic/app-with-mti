@@ -1,0 +1,7 @@
+<img class='profile-photo' src="<%= public_profile.image %>", alt="profile pic goes here">
+
+<% if users_stuff? %>
+    <%= render partial: "private" %>
+<% else %>
+    <%= render partial: "public" %>
+<% end %>

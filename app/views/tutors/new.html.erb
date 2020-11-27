@@ -1,8 +1,6 @@
-<%= render partial: 'partials/user_errors' %>
+<h1>Create your profile! </h1>
 
-<img class='profile-photo' src="<%= public_profile.image %>", alt="profile pic goes here">
-
-<%# needs a change password option %>
+<%= render partial: "partials/user_errors" %>
 
 <%= form_with model: @user, local: true do |f| %>
 
@@ -29,19 +27,19 @@
     <%= f.label :puppets, "Puppets? [y/n]" %>
     <%= f.check_box :puppets %><br>
 
+    <%= f.label :password, "Password" %>
+    <%= f.password_field :password %><br>
+
+    <%= f.label :password_confirmation, "Confirm Password" %>
+    <%= f.password_field :password_confirmation %><br>
+
     <%= f.submit "Submit Profile!" %>
 
 <% end %>
 
 
-<h3>-- OR --</h3>
-
-<button><%= delete_profile %></button>
-
 <br><br>
 
-<div class='centered'>
-    <button><%= link_to "Profile", current_user.url %></button>
-    <button><%= link_to "All Students", students_path %></button>
+<div>
     <button><%= link_to "Home Page", '/' %></button>
 </div>
