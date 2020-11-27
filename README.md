@@ -37,7 +37,7 @@ CHECKLIST:
 [x] views/appointments -> new; edit; show
 
 ADDDITIONAL FUNCTIONALITY:
-[ ] Refactor for UsersController Inheritance - adjust views accordingly
+[x] Refactor for UsersController Inheritance - adjust views accordingly
 [ ] Clean up sessions controller with omniauth
 [ ] Incorporate vanity urls
 [ ] Strong password format; edit password in users#edit

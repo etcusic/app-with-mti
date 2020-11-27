@@ -8,7 +8,6 @@ class TutorsController < UsersController
 
     def highly_rated
         @tutors = Tutor.highly_rated.ranked_tutors
-        binding.pry
         render :index
     end
 
