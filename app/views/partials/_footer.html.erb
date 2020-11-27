@@ -3,19 +3,20 @@
   <% if !logged_in? %>
    
     <button><%= link_to "Log In", '/login' %></button>
-    <button><%= link_to "Create Profile!", new_user_path %></button> 
+    <button><%= link_to "Become a Tutor!", new_tutor_path %></button>
+    <button><%= link_to "Become a Student!", new_student_path %></button>
     <button><%= link_to 'Log in with Facebook', '/auth/facebook' %></button>
     
     <% if !tutors_index? %>
-      <button><%= link_to "Meet the Tutors!", '/tutors' %></button>
+      <button><%= link_to "Meet the Tutors!", tutors_path %></button>
     <% end %>
 
   <% else %>
 
     <% if !user_profile? %>
-      <button><%= link_to "Profile", user_url %></button>
+      <button><%= link_to "Profile", direct_to_show %></button>
     <% end %>
-
+<%#binding.pry%>
     <% if user_profile? && current_user.is_tutor? %>
       <button><%= link_to "All Students", students_path %></button>
     <% end %>
@@ -31,7 +32,7 @@
     <% end %>
 
     <% if user_profile? %>
-        <button><%= link_to "Edit Profile", edit_user_path(current_user) %></button>
+        <button><%= link_to "Edit Profile", direct_to_edit %></button>
     <% end %>
 
     <button><%= link_to "Log Out", '/logout', method: 'post' %></button>

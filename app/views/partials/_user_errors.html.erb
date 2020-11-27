@@ -1,11 +1,11 @@
-<% if @user.errors.any? %>
+<% if current_user.errors.any? %>
+    <p>Errors:</p>
     <ul>
-        <% @user.errors.messages.each do |msg| %>
+        <% current_user.errors.messages.each do |msg| %>
             <li><%= display_errors(msg) %></li>
         <% end %>
     </ul>
 <% end %>
-   
     
 
 
