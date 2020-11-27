@@ -5,3 +5,21 @@
 <img src="/photos/muppets.jpg" alt="happy little trees right here"><br><br>
 
 </div>
+
+<div class='centered'>
+    <% if !logged_in? %>
+   
+        <button><%= link_to "Log In", '/login' %></button>
+        <button><%= link_to "Become a Tutor!", new_tutor_path %></button>
+        <button><%= link_to "Become a Student!", new_student_path %></button>
+        <button><%= link_to 'Log in with Facebook', '/auth/facebook' %></button>
+    
+    <% else %>
+
+        <button><%= link_to "Profile", current_user.url %></button>
+        <button><%= link_to "Log Out", '/logout', method: 'post' %></button>
+
+    <% end %>
+</div>
+
+<%# Refactoring views - C&P from sti-with-user-controller-inheritance - App, Layouts, Errors %>
