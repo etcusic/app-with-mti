@@ -4,8 +4,7 @@
 
     <h1>Would you like to edit your appointment?</h1>
 
-    <%= form_with model: @appt, url: appt_path, method: 'patch', local: true do |f| %>
-    <%# user_appointment_path(@appt) %>
+    <%= form_with model: [current_user, @appt], local: true do |f| %>
 
         <%= f.label :tutor_id, "Pick Tutor: " %>
         <%= f.collection_select(:tutor_id, Tutor.all, :id, :full_name, { :selected => @appt.tutor_id }) %><br>
@@ -26,9 +25,16 @@
 
 <% end %>
 
-<button><%= link_to "Delete Appointment", appt_path, method: 'delete', data: { confirm: "Are you sure?" } %></button>
+<button><%= link_to "Delete Appointment", [current_user, @appt], method: 'delete', data: { confirm: "Are you sure?" } %></button>
 
 <% if current_user.is_student? %>
     <h3>-- OR --</h3>
-    <button><%= link_to "Create Appointment!", "#{user_url}/appointments/new", method: 'get' %></button>
+    <button><%= link_to "Create Appointment!", new_appointment_path %></button>
 <%end%>
+
+<br><br>
+
+<div class='centered'>
+    <button><%= link_to "Profile", current_user.url %></button>
+    <button><%= link_to "Home Page", '/' %></button>
+</div>

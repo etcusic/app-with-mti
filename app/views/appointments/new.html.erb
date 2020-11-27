@@ -1,9 +1,8 @@
-
 <h1>Make an Appointment!</h1>
 
 <%= render partial: 'appt_errors' %>
 
-<%= form_with url: "/users/#{current_user.id}/appointments", method: "post", local: true do |f| %>
+<%= form_with model: @appt, local: true do |f| %>
 
     <%= f.label :tutor_id, "Pick Tutor: " %>
     <%= f.collection_select(:tutor_id, Tutor.all, :id, :full_name, {include_blank: true}) %><br>
@@ -15,3 +14,10 @@
     <%= f.submit "Create Appointment" %>
 
 <% end %>
+
+<br><br>
+
+<div class='centered'>
+    <button><%= link_to "Profile", current_user.url %></button>
+    <button><%= link_to "Home Page", '/' %></button>
+</div>
