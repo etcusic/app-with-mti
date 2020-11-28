@@ -1,5 +1,6 @@
 .profile-photo {
     float: right;
+    margin-right: 2%;
 }
 
 .centered {
@@ -23,4 +24,8 @@
 .form-body {
     font-size: 40px;
     text-color: black;
+}
+
+.button {
+    background-color: waves-effect yellow lighten-4 btn-small;
 }

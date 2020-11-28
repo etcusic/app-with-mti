@@ -54,9 +54,9 @@ ADDDITIONAL FUNCTIONALITY:
 [ ] Admin class
 
 CSS: (materialize)
-[ ] Home page
+[x] Home page
+[x] Sessions/new
 [ ] User show pages - different background colors for students and tutors
 [ ] Form pages
 [ ] Appointment edit page
 [ ] Index pages
-[ ]
