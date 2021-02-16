@@ -1,7 +1,9 @@
-# README
-
 ruby 2.6.1
 rails 6.0.3
+
+- Video walkthrough: 
+- Blog entry 1: https://etcusic.github.io/sti_mti_and_different_types_of_users
+- Blog entry 2: https://etcusic.github.io/many_to_many_relationship_b_t_tables_that_inherit_from_user_table 
 
 To use this app, clone the repository and run the following commands in your CLI:
 - bundle install 
