@@ -1,9 +1,9 @@
 ruby 2.6.1
 rails 6.0.3
 
-- Video walkthrough: 
-- Blog entry 1: https://etcusic.github.io/sti_mti_and_different_types_of_users
-- Blog entry 2: https://etcusic.github.io/many_to_many_relationship_b_t_tables_that_inherit_from_user_table 
+- Video demo: https://www.youtube.com/watch?v=ieZiX9GhFJs 
+- Blog - single table vs multi table inheritance: https://etcusic.github.io/sti_mti_and_different_types_of_users
+- Blog - controller inheritance structure: https://etcusic.github.io/many_to_many_relationship_b_t_tables_that_inherit_from_user_table 
 
 To use this app, clone the repository and run the following commands in your CLI:
 - bundle install 
@@ -14,10 +14,6 @@ To use this app, clone the repository and run the following commands in your CLI
 Assuming everything installs and runs correctly, copy and paste http://localhost:3000 into your browser's address bar, which should take you to the landing page. From there, click on either "Create Profile" or "Log in with Facebook" to get started as a tutor or a student!
 
 License: https://github.com/etcusic/app-with-mti/blob/master/LICENSE.md
-
-Corresponding blog submissions: 
-    Backend structure (STI vs MTI) - https://etcusic.github.io/sti_mti_and_different_types_of_users 
-    UsersController Inheritance - https://etcusic.github.io/many_to_many_relationship_b_t_tables_that_inherit_from_user_table 
 
 CHECKLIST:
 - [x] Generate resource User as single table inheritance -> Tutor and Student inherit from User
@@ -38,6 +34,14 @@ CHECKLIST:
 - [x] views/students -> _profile; _public; edit; index
 - [x] views/appointments -> new; edit; show
 
+HTML & CSS:
+- [ ] Home page
+- [ ] Sessions/sign in
+- [ ] User show page
+- [ ] Appointment show page
+- [ ] Form pages - new & edit
+- [ ] Index pages
+
 ADDDITIONAL FUNCTIONALITY:
 - [x] Refactor for UsersController Inheritance - adjust views accordingly
 - [ ] Clean up sessions controller with omniauth
@@ -54,11 +58,3 @@ ADDDITIONAL FUNCTIONALITY:
 - [ ] MessagesController -> index, new, create, show, destroy
 - [ ] views/messages -> index; new; show
 - [ ] Admin class
-
-CSS: (materialize)
-- [x] Home page
-- [x] Sessions/new
-- [ ] User show pages - different background colors for students and tutors
-- [ ] Form pages
-- [ ] Appointment edit page
-- [ ] Index pages
